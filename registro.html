@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de usuario</title>
+    <link rel="stylesheet" href="registro.css">
+</head>
+<body>
+    <form id="registroUsuario"> 
+        <fieldset>
+            <legend>Registro de usuario</legend>
+<br />
+            <label>Nombre Completo</label>
+            <input type ="text"
+            placeholder="Ingrese nombre completo"
+            required
+            id ="nombre">
+<br />
+            <label>Usuario</label>
+            <input type ="text"
+            placeholder="Ingrese nombre de usuario"
+            required
+            id ="usuario">
+<br />
+            <label>Correo electrónico</label>
+            <input type ="email"
+            placeholder="Ingrese correo electrónico"
+            required
+            id="correo">
+
+<br /> 
+            <label>Telefono</label>
+            <input type ="tel"
+            required
+            id="telefono">
+<br />
+            <label>Fecha de nacimiento</label>
+            <input type ="date"
+            required
+            id="fechaNacimiento">
+<br />
+            <label>Contraseña</label>
+            <input type ="password"
+            required
+            id="contrasena">
+<br />
+            <button type="submit">Registrarse</button>
+        </fieldset>
+    </form>
+    <script src="registro.js"></script>
+</body>
+</html>
