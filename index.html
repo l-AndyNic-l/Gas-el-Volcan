@@ -9,13 +9,13 @@
 </head>
 <body>
     <header>
-        <div class="contenedor-img">
-            <img src="./img/logo-navbar.png" alt="logo-navbar" >
+  <div class="contenedor-img">
+            <a href="index.html"><img src="./img/logo-navbar.png" alt="logo-navbar"></a>
         </div>
 
         <nav class="contenedor-nav">
             <ul class="lista-nav">
-                <li><a id="activo">Inicio</a></li>
+                <li><a id="activo" href="index.html">Inicio</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#catalogo">Catálogo</a></li>
                 <li><a href="./productos.html">Productos</a></li>
@@ -36,7 +36,7 @@
         <div class="contenedor-presentacion">
             <h1>Gas el Volcan: Calor que llena tu Hogar</h1>
             <p>Más de 10 años garantizando el suministro de gas licuado en los hogares, comercios e industrias. Calidad, seguridad y puntualidad en cada entrega. <br />Servicios y atención al cliente 24/7 para que nunca te falte energía.</p>
-            <button>Solicita tu Suministro</button>
+            <button onclick="location.href='#catalogo'">Solicita tu Suministro</button>
         </div>
     </section>
 
@@ -55,55 +55,55 @@
         <div class="contenedor-catalogo">    
             <article class="tarjeta-catalogo">
                 <div class="overlay">
-                    <a href="productos.html" class="btn-categoria">Ver Categoría</a>
+                    <a href="producto.html?marca=gasco&peso=5kg" class="btn-categoria">Ver Producto</a>
                 </div>
-                <img src="./img/gas-11gasco.webp" alt="Cilindro de 5kg">
-                <h3>Cilindro de gas 5kg</h3>
+                <img src="./img/gasco5.webp" alt="Cilindro Gasco 5kg">
+                <h3>Cilindro Gasco 5kg</h3>
                 <p>Duración de 34 hrs en uso de cocina (fuego alto)</p>
             </article>
 
             <article class="tarjeta-catalogo">
                 <div class="overlay">
-                    <a href="productos.html" class="btn-categoria">Ver Categoría</a>
+                    <a href="producto.html?marca=gasco&peso=11kg" class="btn-categoria">Ver Producto</a>
                 </div>
-                <img src="./img/gas-11.webp" alt="Cilindro de 11kg">
-                <h3>Cilindro de gas 11kg</h3>
+                <img src="./img/gas-11gasco.webp" alt="Cilindro Gasco 11kg">
+                <h3>Cilindro Gasco 11kg</h3>
                 <p>Duración de 76 hrs en uso de cocina (fuego alto)</p>
             </article>
 
             <article class="tarjeta-catalogo">
                 <div class="overlay">
-                    <a href="productos.html" class="btn-categoria">Ver Categoría</a>
+                    <a href="producto.html?marca=gasco&peso=15kg" class="btn-categoria">Ver Producto</a>
                 </div>
-                <img src="./img/Cilindro_15.png" alt="Cilindro de 15kg">
-                <h3>Cilindro de gas 15kg</h3>
+                <img src="./img/gasco5.webp" alt="Cilindro Gasco 15kg">
+                <h3>Cilindro Gasco 15kg</h3>
                 <p>Duración de 103 hrs en uso de cocina (fuego alto)</p>
             </article>
 
             <article class="tarjeta-catalogo">
                 <div class="overlay">
-                    <a href="productos.html" class="btn-categoria">Ver Categoría</a>
+                    <a href="producto.html?marca=abastible&peso=5kg" class="btn-categoria">Ver Producto</a>
                 </div>
-                <img src="./img/gas.webp" alt="Cilindro de 5kg">
-                <h3>Cilindro Abastible</h3>
+                <img src="./img/abastible11.webp" alt="Cilindro Abastible 5kg">
+                <h3>Cilindro Abastible 5kg</h3>
                 <p>Duración de 34 hrs en uso de cocina (fuego alto)</p>
             </article>
 
             <article class="tarjeta-catalogo">
                 <div class="overlay">
-                    <a href="productos.html" class="btn-categoria">Ver Categoría</a>
+                    <a href="producto.html?marca=lipigas&peso=11kg" class="btn-categoria">Ver Producto</a>
                 </div>
-                <img src="./img/gas-5.webp" alt="Cilindro de 11kg">
-                <h3>Cilindro Gasco</h3>
+                <img src="./img/lipigas11.webp" alt="Cilindro Lipigas 11kg">
+                <h3>Cilindro Lipigas 11kg</h3>
                 <p>Duración de 76 hrs en uso de cocina (fuego alto)</p>
             </article>
 
             <article class="tarjeta-catalogo">
                 <div class="overlay">
-                    <a href="productos.html" class="btn-categoria">Ver Categoría</a>
+                    <a href="producto.html?marca=lipigas&peso=15kg" class="btn-categoria">Ver Producto</a>
                 </div>
-                <img src="./img/Cilindro-15.png" alt="Cilindro de 15kg">
-                <h3>Cilindro Lipigas</h3>
+                <img src="./img/lipigas15.png" alt="Cilindro Lipigas 15kg">
+                <h3>Cilindro Lipigas 15kg</h3>
                 <p>Duración de 103 hrs en uso de cocina (fuego alto)</p>
             </article>
         </div>
@@ -111,24 +111,24 @@
     </section>
 
     <section id="contactos" class="contactos">
-        <h1 class="titulo"><span>Contactanos</span> a Nuestras Redes</h1>
+        <h1 class="titulo"><span>Contáctanos</span> a Nuestras Redes</h1>
         <div class="contenedor-contactos">
             <div class="contactos-formulario">
-                <form>
+                <form onsubmit="event.preventDefault(); alert('Mensaje enviado correctamente.');">
                     <label>Correo:</label>
-                    <input placeholder="Escribe tu correo..." />
+                    <input type="email" placeholder="Escribe tu correo..." required />
                     <label>Mensaje:</label>
-                    <textarea placeholder="Escribe tu mensaje..."></textarea>
+                    <textarea placeholder="Escribe tu mensaje..." required></textarea>
+                    <div class="btn-redes-sociales">
+                        <button type="submit">Enviar</button>
+                        <ul>
+                            <li><a href="index.html"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="index.html"><i class="fa-brands fa-facebook"></i></a></li>
+                            <li><a href="index.html"><i class="fa-brands fa-tiktok"></i></a></li>
+                            <li><a href="index.html"><i class="fa-brands fa-x-twitter"></i></a></li>
+                        </ul>
+                    </div>
                 </form>
-                <div class="btn-redes-sociales">
-                    <button>Enviar</button>
-                    <ul>
-                        <li><a href="index.html"><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href="index.html"><i class="fa-brands fa-facebook"></i></a></li>
-                        <li><a href="index.html"><i class="fa-brands fa-tiktok"></i></a></li>
-                        <li><a href="index.html"><i class="fa-brands fa-x-twitter"></i></a></li>
-                    </ul>
-                </div>
             </div>
             <div class="contactos-map">
                 <img src="./img/distribuidora.jpg" alt="mapa"/>
@@ -141,16 +141,15 @@
         <div class="informacion">
             <div class="descripcion">
                 <div class="logo">
-                    <img src="./img/logo-navbar.png" alt="">
+                    <img src="./img/logo-navbar.png" alt="Gas el Volcan">
                 </div>
                 <div class="texto">
-                    <p>Retro-Manía es un espacio dedicado a los amantes de los videojuegos y la cultura arcade. Explora nuestros productos, servicios y contenido inspirado en los clásicos que marcaron una generación. ¡Revive la nostalgia y disfruta de la experiencia Retro-Manía!</p>
+                    <p>Gas el Volcan es tu aliado en el suministro de gas licuado para el hogar y la industria. Más de 10 años garantizando entregas seguras y puntuales 24/7.</p>
                 </div>
             </div>
 
             <div class="navegacion">
                 <h2>Menú</h2>
-                
                 <div class="filas">
                     <ul>
                         <li><a href="index.html">Inicio</a></li>
@@ -169,12 +168,18 @@
 
             <div class="direccion">
                 <h2>Dirección y Redes</h2>
-                
                 <div class="filas">
                     <ul>
                         <li><a href="index.html"><i class="fa-solid fa-location-dot"></i> Av. Vicuña Mackenna 2450, Local 18, Santiago, Chile</a></li>
                         <li><a href="index.html"><i class="fa-solid fa-phone"></i> +569 3650 9979</a></li>
-                        <li class="redes"><a href="index.html"><i class="fa-brands fa-instagram"></i> <i class="fa-brands fa-facebook"></i> <i class="fa-brands fa-tiktok"></i> <i class="fa-brands fa-x-twitter"></i></a></li>
+                        <li class="redes">
+                            <a href="index.html">
+                                <i class="fa-brands fa-instagram"></i> 
+                                <i class="fa-brands fa-facebook"></i> 
+                                <i class="fa-brands fa-tiktok"></i> 
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -185,5 +190,6 @@
         </div>
     </footer>
 
+    <script src="./js/descripcion.js"></script>
 </body>
 </html>

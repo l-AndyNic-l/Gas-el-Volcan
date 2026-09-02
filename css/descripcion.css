@@ -1,0 +1,288 @@
+.breadcrumbs {
+    max-width: 1200px;
+    margin: 20px auto 10px auto;
+    padding: 0 20px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.breadcrumbs a {
+    color: #333;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+/* Layout Principal: 2 Columnas */
+.contenedor-producto {
+    max-width: 1200px;
+    margin: 20px auto 50px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Columna Izquierda: Galería */
+.galeria-producto {
+    display: flex;
+    gap: 15px;
+}
+
+.miniaturas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.miniaturas img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.miniaturas img:hover {
+    border-color: #000;
+}
+
+.imagen-principal {
+    flex: 1;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.imagen-principal img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+/* Columna Derecha: Detalles */
+.detalles-producto {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.detalles-producto .marca {
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #777;
+}
+
+.detalles-producto h1 {
+    font-size: 2rem;
+    margin: 0;
+    color: #222;
+}
+
+/* Valoración y Precio */
+.valoracion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.precio-sku {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.precio {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e63946;
+}
+
+.sku {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* Selector de Variantes */
+.opciones-variantes {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+/* Base de Botones de Selección */
+.btn-marca,
+.btn-variante {
+    padding: 10px 20px;
+    border: 2px solid #ccc;
+    background: #fff;
+    color: #333;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.25s ease-in-out;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.btn-marca:hover,
+.btn-variante:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+}
+
+
+/* Lipigas: Amarillo corporativo */
+.btn-marca:hover:nth-child(2),
+.btn-marca.activa-lipigas {
+    background-color: #ffcc00 !important;
+    border-color: #e6b800 !important;
+    color: #1a1a1a !important;
+}
+
+/* Gasco: Blanco brillante con borde/texto azul */
+.btn-marca:hover:nth-child(1),
+.btn-marca.activa-gasco {
+    background-color: #ffffff !important;
+    border-color: #00529b !important;
+    color: #00529b !important;
+    box-shadow: 0 0 10px rgba(0, 82, 155, 0.3) !important;
+}
+
+/* Abastible: Naranja */
+.btn-marca:hover:nth-child(3),
+.btn-marca.activa-abastible {
+    background-color: #ff6600 !important;
+    border-color: #e05500 !important;
+    color: #ffffff !important;
+}
+
+/* Formatos de Peso (5kg, 11kg, 15kg) */
+.btn-variante:hover,
+.btn-variante.activa {
+    background: #222;
+    color: #fff;
+    border-color: #222;
+}
+
+/* Acciones de Compra */
+.acciones-compra {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.selector-cantidad {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.selector-cantidad button {
+    border: none;
+    background: #f4f4f4;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.selector-cantidad input {
+    width: 40px;
+    border: none;
+    text-align: center;
+    font-size: 1rem;
+    -moz-appearance: textfield;
+}
+
+.btn-anadir-carrito {
+    flex: 1;
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.3s;
+}
+
+.btn-anadir-carrito:hover {
+    background: #e63946;
+}
+
+.btn-favorito {
+    background: transparent;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #555;
+    transition: all 0.2s;
+}
+
+.btn-favorito:hover {
+    color: #e63946;
+    border-color: #e63946;
+}
+
+/* Acordeones */
+.acordeon-info {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.acordeon-info details {
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+}
+
+.acordeon-info summary {
+    cursor: pointer;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    user-select: none;
+}
+
+.acordeon-info p, .acordeon-info ul {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Diseño Móvil (Responsive) */
+@media (max-width: 768px) {
+    .contenedor-producto {
+        grid-template-columns: 1fr;
+    }
+    .galeria-producto {
+        flex-direction: column-reverse;
+    }
+    .miniaturas {
+        flex-direction: row;
+        justify-content: center;
+    }
+}

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
+    <title>Productos | Gas el Volcan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/estilos.css">
-    <link rel="stylesheet" href="productos.css">
+    <link rel="stylesheet" href="./css/productos.css">
 </head>
 <body>
     <header>
         <div class="contenedor-img">
-            <img src="./img/logo-navbar.png" alt="logo-navbar" >
+            <a href="index.html"><img src="./img/logo-navbar.png" alt="logo-navbar"></a>
         </div>
 
         <nav class="contenedor-nav">
@@ -34,154 +34,164 @@
     </header>
 
     <section class="productos">
-        <h1 class="titulo"><span>Cilendros</span> de Gas Licuado</h1>
+        <h1 class="titulo"><span>Cilindros</span> de Gas Licuado</h1>
         <div class="contenedor-categorias">
             <div class="filtros-categorias">
                 <ul>
-                    <h2>Categoria Marca</h2>
-                    <li id="Todo" onclick="filtrar('Todo')" class="activo_filtro" >Todo</li>
-                    <li id="Gasco" onclick="filtrar('Gasco')" >Gasco</li>
-                    <li id="Lipigas" onclick="filtrar('Lipigas')">Lipigas</li>
-                    <li id="Abastible" onclick="filtrar('Abastible')">Abastible</li>
-                    <h2 class="sub-categoria">Categoria Kg</h2>
-                    <li id="5kg" onclick="filtrar('5kg')">Cilindro de 5kg</li>
-                    <li id="11kg" onclick="filtrar('11kg')">Cilindro de 11kg</li>
-                    <li id="15kg" onclick="filtrar('15kg')">Cilindro de 15kg</li>
+                    <h2>Categoría Marca</h2>
+                    <li id="filter-todo" onclick="filtrar('Todo')" class="activo_filtro">Todo</li>
+                    <li id="filter-gasco" onclick="filtrar('Gasco')">Gasco</li>
+                    <li id="filter-lipigas" onclick="filtrar('Lipigas')">Lipigas</li>
+                    <li id="filter-abastible" onclick="filtrar('Abastible')">Abastible</li>
+                    
+                    <h2 class="sub-categoria">Categoría Kg</h2>
+                    <li id="filter-5kg" onclick="filtrar('5kg')">Cilindro de 5kg</li>
+                    <li id="filter-11kg" onclick="filtrar('11kg')">Cilindro de 11kg</li>
+                    <li id="filter-15kg" onclick="filtrar('15kg')">Cilindro de 15kg</li>
                 </ul>
             </div>
 
             <div class="contenedor-productos">
-                <article id="Gasco" data-peso="5kg" class="producto">
+                <!-- Gasco 5kg -->
+                <article data-marca="Gasco" data-peso="5kg" class="producto">
                     <div class="ver-más">
-                        <a href="producto.html" class="btn-ver-más"><i class="fa-solid fa-eye"></i></a>
+                        <a href="producto.html?marca=gasco&peso=5kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
                     </div>
-                    <img src="./img/gas-11gasco.webp"/>
+                    <img src="./img/gasco5.webp" alt="Gasco 5kg"/>
                     <p>Gasco</p>
                     <h3>Cilindro de 5kg</h3>
                     <div class="compra">
                         <h3 class="precio">$11.000</h3>
                         <div class="añadir-carrito">
-                            <a href="productos.html">Añadir al Carrito</a>
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Gasco 5kg al carrito');">Añadir al Carrito</a>
                         </div>
                     </div>
                 </article>
 
-                <article id="Lipigas" data-peso="15kg" class="producto">
+                <!-- Lipigas 15kg -->
+                <article data-marca="Lipigas" data-peso="15kg" class="producto">
                     <div class="ver-más">
-                        <a href="producto.html" class="btn-ver-más"><i class="fa-solid fa-eye"></i></a>
+                        <a href="producto.html?marca=lipigas&peso=15kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
                     </div>
-                    <img src="./img/gas-11.webp"/>
+                    <img src="./img/lipigas15.png" alt="Lipigas 15kg"/>
                     <p>Lipigas</p>
                     <h3>Cilindro de 15kg</h3>
                     <div class="compra">
                         <h3 class="precio">$26.000</h3>
                         <div class="añadir-carrito">
-                            <a href="productos.html">Añadir al Carrito</a>
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Lipigas 15kg al carrito');">Añadir al Carrito</a>
                         </div>
                     </div>
                 </article>
 
-                <article id="Abastible" data-peso="15kg" class="producto">
+                <!-- Abastible 15kg -->
+                <article data-marca="Abastible" data-peso="15kg" class="producto">
                     <div class="ver-más">
-                        <a href="producto.html" class="btn-ver-más"><i class="fa-solid fa-eye"></i></a>
+                        <a href="producto.html?marca=abastible&peso=15kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
                     </div>
-                    <img src="./img/Cilindro_15.png"/>
+                    <img src="./img/abastible15.png" alt="Abastible 15kg"/>
                     <p>Abastible</p>
                     <h3>Cilindro de 15kg</h3>
                     <div class="compra">
                         <h3 class="precio">$23.000</h3>
                         <div class="añadir-carrito">
-                            <a href="productos.html">Añadir al Carrito</a>
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Abastible 15kg al carrito');">Añadir al Carrito</a>
                         </div>
                     </div>
                 </article>
 
-                <article id="Lipigas"data-peso="5kg" class="producto">
+                <!-- Lipigas 5kg -->
+                <article data-marca="Lipigas" data-peso="5kg" class="producto">
                     <div class="ver-más">
-                        <a href="producto.html" class="btn-ver-más"><i class="fa-solid fa-eye"></i></a>
+                        <a href="producto.html?marca=lipigas&peso=5kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
                     </div>
-                    <img src="./img/gas-11.webp"/>
+                    <img src="./img/lipigas11.webp" alt="Lipigas 5kg"/>
                     <p>Lipigas</p>
                     <h3>Cilindro de 5kg</h3>
                     <div class="compra">
                         <h3 class="precio">$11.000</h3>
                         <div class="añadir-carrito">
-                            <a href="productos.html">Añadir al Carrito</a>
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Lipigas 5kg al carrito');">Añadir al Carrito</a>
                         </div>
                     </div>
                 </article>
 
-                <article id="Gasco" data-peso="15kg" class="producto">
+                <!-- Gasco 15kg -->
+                <article data-marca="Gasco" data-peso="15kg" class="producto">
                     <div class="ver-más">
-                        <a href="producto.html" class="btn-ver-más"><i class="fa-solid fa-eye"></i></a>
+                        <a href="producto.html?marca=gasco&peso=15kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
                     </div>
-                    <img src="./img/gas-11gasco.webp"/>
+                    <img src="./img/gas-11gasco.webp" alt="Gasco 15kg"/>
                     <p>Gasco</p>
                     <h3>Cilindro de 15kg</h3>
                     <div class="compra">
                         <h3 class="precio">$26.000</h3>
                         <div class="añadir-carrito">
-                            <a href="productos.html">Añadir al Carrito</a>
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Gasco 15kg al carrito');">Añadir al Carrito</a>
                         </div>
                     </div>
                 </article>
 
-                <article id="Abastible" data-peso="11kg" class="producto">
+                <!-- Abastible 11kg -->
+                <article data-marca="Abastible" data-peso="11kg" class="producto">
                     <div class="ver-más">
-                        <a href="producto.html" class="btn-ver-más"><i class="fa-solid fa-eye"></i></a>
+                        <a href="producto.html?marca=abastible&peso=11kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
                     </div>
-                    <img src="./img/Cilindro_15.png"/>
+                    <img src="./img/abastible11.webp" alt="Abastible 11kg"/>
                     <p>Abastible</p>
                     <h3>Cilindro de 11kg</h3>
                     <div class="compra">
                         <h3 class="precio">$21.000</h3>
                         <div class="añadir-carrito">
-                            <a href="productos.html">Añadir al Carrito</a>
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Abastible 11kg al carrito');">Añadir al Carrito</a>
                         </div>
                     </div>
                 </article>
 
-                <article id="Abastible" data-peso="5kg" class="producto">
+                <!-- Abastible 5kg -->
+                <article data-marca="Abastible" data-peso="5kg" class="producto">
                     <div class="ver-más">
-                        <a href="producto.html" class="btn-ver-más"><i class="fa-solid fa-eye"></i></a>
+                        <a href="producto.html?marca=abastible&peso=5kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
                     </div>
-                    <img src="./img/Cilindro_15.png"/>
+                    <img src="./img/abastible15.png" alt="Abastible 5kg"/>
                     <p>Abastible</p>
                     <h3>Cilindro de 5kg</h3>
                     <div class="compra">
                         <h3 class="precio">$11.000</h3>
                         <div class="añadir-carrito">
-                            <a href="productos.html">Añadir al Carrito</a>
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Abastible 5kg al carrito');">Añadir al Carrito</a>
                         </div>
                     </div>
                 </article>
 
-                <article id="Lipigas" data-peso="11kg" class="producto">
+                <!-- Lipigas 11kg -->
+                <article data-marca="Lipigas" data-peso="11kg" class="producto">
                     <div class="ver-más">
-                        <a href="producto.html" class="btn-ver-más"><i class="fa-solid fa-eye"></i></a>
+                        <a href="producto.html?marca=lipigas&peso=11kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
                     </div>
-                    <img src="./img/gas-11.webp"/>
+                    <img src="./img/lipigas11.webp" alt="Lipigas 11kg"/>
                     <p>Lipigas</p>
                     <h3>Cilindro de 11kg</h3>
                     <div class="compra">
                         <h3 class="precio">$19.000</h3>
                         <div class="añadir-carrito">
-                            <a href="productos.html">Añadir al Carrito</a>
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Lipigas 11kg al carrito');">Añadir al Carrito</a>
                         </div>
                     </div>
                 </article>
 
-                <article id="Gasco" data-peso="11kg" class="producto">
+                <!-- Gasco 11kg -->
+                <article data-marca="Gasco" data-peso="11kg" class="producto">
                     <div class="ver-más">
-                        <a href="producto.html" class="btn-ver-más"><i class="fa-solid fa-eye"></i></a>
+                        <a href="producto.html?marca=gasco&peso=11kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
                     </div>
-                    <img src="./img/gas-11gasco.webp"/>
+                    <img src="./img/gas-11gasco.webp" alt="Gasco 11kg"/>
                     <p>Gasco</p>
                     <h3>Cilindro de 11kg</h3>
                     <div class="compra">
                         <h3 class="precio">$18.000</h3>
                         <div class="añadir-carrito">
-                            <a href="productos.html">Añadir al Carrito</a>
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Gasco 11kg al carrito');">Añadir al Carrito</a>
                         </div>
                     </div>
                 </article>
@@ -193,16 +203,15 @@
         <div class="informacion">
             <div class="descripcion">
                 <div class="logo">
-                    <img src="./img/logo-navbar.png" alt="">
+                    <img src="./img/logo-navbar.png" alt="Gas el Volcan">
                 </div>
                 <div class="texto">
-                    <p>Retro-Manía es un espacio dedicado a los amantes de los videojuegos y la cultura arcade. Explora nuestros productos, servicios y contenido inspirado en los clásicos que marcaron una generación. ¡Revive la nostalgia y disfruta de la experiencia Retro-Manía!</p>
+                    <p>Gas el Volcan es tu aliado en el suministro de gas licuado para el hogar y la industria. Más de 10 años garantizando entregas seguras y puntuales 24/7.</p>
                 </div>
             </div>
 
             <div class="navegacion">
                 <h2>Menú</h2>
-                
                 <div class="filas">
                     <ul>
                         <li><a href="index.html">Inicio</a></li>
@@ -221,12 +230,18 @@
 
             <div class="direccion">
                 <h2>Dirección y Redes</h2>
-                
                 <div class="filas">
                     <ul>
                         <li><a href="index.html"><i class="fa-solid fa-location-dot"></i> Av. Vicuña Mackenna 2450, Local 18, Santiago, Chile</a></li>
                         <li><a href="index.html"><i class="fa-solid fa-phone"></i> +569 3650 9979</a></li>
-                        <li class="redes"><a href="index.html"><i class="fa-brands fa-instagram"></i> <i class="fa-brands fa-facebook"></i> <i class="fa-brands fa-tiktok"></i> <i class="fa-brands fa-x-twitter"></i></a></li>
+                        <li class="redes">
+                            <a href="index.html">
+                                <i class="fa-brands fa-instagram"></i> 
+                                <i class="fa-brands fa-facebook"></i> 
+                                <i class="fa-brands fa-tiktok"></i> 
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
