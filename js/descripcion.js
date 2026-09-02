@@ -2,23 +2,23 @@ const productosDB = {
   gasco: {
     nombre: "Gasco",
     imagen: "./img/gas-11gasco.webp",
-    "5kg": { precio: "$11.000", sku: "SKU: GAS-5KG" },
-    "11kg": { precio: "$18.000", sku: "SKU: GAS-11KG" },
-    "15kg": { precio: "$26.000", sku: "SKU: GAS-15KG" }
+    "5kg": { precio: "$11.000", sku: "SKU: ABA-5KG", descripcion: "Duración de 34hrs en uso de cocina (Fuego alto)"},
+    "11kg": { precio: "$21.000", sku: "SKU: ABA-11KG", descripcion: "Duración de 75hrs en uso de cocina (Fuego alto)"},
+    "15kg": { precio: "$23.000", sku: "SKU: ABA-15KG", descripcion: "Duración de 102hrs en uso de cocina (Fuego alto)"}
   },
   lipigas: {
     nombre: "Lipigas",
-    imagen: "./img/gas-11.webp",
-    "5kg": { precio: "$11.000", sku: "SKU: LIP-5KG" },
-    "11kg": { precio: "$19.000", sku: "SKU: LIP-11KG" },
-    "15kg": { precio: "$26.000", sku: "SKU: LIP-15KG" }
+    imagen: "./img/lipigas15.png",
+    "5kg": { precio: "$11.000", sku: "SKU: ABA-5KG", descripcion: "Duración de 34hrs en uso de cocina (Fuego alto)"},
+    "11kg": { precio: "$21.000", sku: "SKU: ABA-11KG", descripcion: "Duración de 75hrs en uso de cocina (Fuego alto)"},
+    "15kg": { precio: "$23.000", sku: "SKU: ABA-15KG", descripcion: "Duración de 102hrs en uso de cocina (Fuego alto)"}
   },
   abastible: {
     nombre: "Abastible",
-    imagen: "./img/Cilindro_15.png",
-    "5kg": { precio: "$11.000", sku: "SKU: ABA-5KG" },
-    "11kg": { precio: "$21.000", sku: "SKU: ABA-11KG" },
-    "15kg": { precio: "$23.000", sku: "SKU: ABA-15KG" }
+    imagen: "./img/abastible11.webp",
+    "5kg": { precio: "$11.000", sku: "SKU: ABA-5KG", descripcion: "Duración de 34hrs en uso de cocina (Fuego alto)"},
+    "11kg": { precio: "$21.000", sku: "SKU: ABA-11KG", descripcion: "Duración de 75hrs en uso de cocina (Fuego alto)"},
+    "15kg": { precio: "$23.000", sku: "SKU: ABA-15KG", descripcion: "Duración de 102hrs en uso de cocina (Fuego alto)"}
   }
 };
 
@@ -49,6 +49,7 @@ function actualizarInterfaz() {
   const txtBreadcrumb = document.getElementById('breadcrumb-producto');
   const txtPrecio = document.getElementById('txt-precio');
   const txtSku = document.getElementById('txt-sku');
+  const txtDescripcion = document.getElementById('txt-descripcion');
   const imgPrincipal = document.getElementById('img-principal');
   const imgThumb1 = document.getElementById('img-thumb-1');
   const imgThumb2 = document.getElementById('img-thumb-2');
@@ -58,6 +59,7 @@ function actualizarInterfaz() {
   if (txtBreadcrumb) txtBreadcrumb.innerText = `${datosMarca.nombre} - ${pesoSeleccionado}`;
   if (txtPrecio) txtPrecio.innerText = datosProducto.precio;
   if (txtSku) txtSku.innerText = datosProducto.sku;
+  if (txtDescripcion) txtDescripcion.innerText = datosProducto.descripcion;
 
   if (imgPrincipal) imgPrincipal.src = datosMarca.imagen;
   if (imgThumb1) imgThumb1.src = datosMarca.imagen;
