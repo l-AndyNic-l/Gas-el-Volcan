@@ -231,6 +231,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    height: 310px;
     overflow: hidden;
 }
 
@@ -387,7 +388,8 @@ header {
     list-style: none;
 }
 
-.btn-redes-sociales ul li {
+.btn-redes-sociales ul li a {
+    text-decoration: none;
     margin: 0 20px;
     font-size: 1.4rem;
     color: rgb(49, 175, 104);
@@ -395,7 +397,7 @@ header {
     transition: color 0.3s ease;
 }
 
-.btn-redes-sociales ul li:hover {
+.btn-redes-sociales ul li a:hover {
     color: rgb(0, 77, 165);
 }
 
