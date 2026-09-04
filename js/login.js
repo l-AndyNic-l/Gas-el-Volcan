@@ -10,16 +10,16 @@ login.addEventListener("submit", function(event){
     let contrasenaRegistrada = localStorage.getItem("contrasenaGuardada");
 
     if (usuario.value !== usuarioRegistrado && correo.value !== correoRegistrado) {
-        alert("El usuario o correo electrónico no existe o está incorrecto.");
+        alert("Su usuario o correo electrónico no existe o está incorrecto.");
         usuario.focus();
         return;
-    }
+    };
 
     if (contrasena.value !== contrasenaRegistrada) {
-        alert("La contraseña es incorrecta.");
+        alert("Su cuenta o contraseña no es correcta.");
         contrasena.focus();
         return;
-    }
+    };
 
     alert("¡Inicio de sesión exitoso!");
     usuario.value = "";

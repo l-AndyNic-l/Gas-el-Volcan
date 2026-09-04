@@ -1,3 +1,6 @@
+/*------------------------------------------------------------------*/
+/*------------------------------------------------------------------*/
+/*GLOBAL*/
 * {
     font-family: 'Segoe UI', Arial, sans-serif;
 }
@@ -9,7 +12,10 @@ html {
 body {
     margin: 0;
 }
+/*------------------------------------------------------------------*/
 
+/*------------------------------------------------------------------*/
+/*NAVBAR*/
 header {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -97,9 +103,12 @@ header {
 .contenedor-nav-secundario .lista-nav-secundario li a:hover {
     color: rgb(0, 77, 165);
 }
+/*------------------------------------------------------------------*/
 
+/*------------------------------------------------------------------*/
+/*PRESENTACION*/
 .presentacion {
-    background-image: url(../img/presentacion.webp);
+    background-image: url(../img/presentacion.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -146,14 +155,17 @@ header {
     color: white;
     cursor: pointer;
     border: 3px solid rgb(49, 175, 104);
-    transition: background-color, border 0.3s ease;
+    transition: border, background-color 0.3s ease;
 }
 
 .presentacion .contenedor-presentacion button:hover {
     border: 3px solid rgb(0, 77, 165);
     background-color: rgb(49, 175, 104);
 }
+/*------------------------------------------------------------------*/
 
+/*------------------------------------------------------------------*/
+/*NOSOTROS*/
 .nosotros {
     margin: 20px 0;
     padding: 20px 200px;
@@ -195,7 +207,10 @@ header {
     margin-top: 0;
     margin-bottom: 20px;
 }
+/*------------------------------------------------------------------*/
 
+/*------------------------------------------------------------------*/
+/*CATALOGO*/
 .catalogo {
     margin: 10px 0;
     padding: 10px 180px;
@@ -288,7 +303,10 @@ header {
     background-color: rgb(0, 77, 165);
     transform: scale(1.05);
 }
+/*------------------------------------------------------------------*/
 
+/*------------------------------------------------------------------*/
+/*CONTACTOS*/
 .contactos {
     margin: 20px 0;
     padding: 20px 200px;
@@ -313,7 +331,7 @@ header {
 
 .contactos-formulario label {
     display: block;
-    color: #2c5282;
+    color: rgb(0, 77, 165);
     font-size: 1.1rem;
     font-weight: 700;
     margin-bottom: 6px;
@@ -405,9 +423,9 @@ header {
     text-align: center;
 }
 
-.contactos-map img {
+.contactos-map video {
     width: 100%;
-    height: auto;
+    object-fit: cover;
     border-radius: 10px;
     border: 1px solid black;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -426,7 +444,673 @@ header {
 .contactos-map a:hover {
     color: rgb(0, 77, 165);
 }
+/*------------------------------------------------------------------*/
 
+/*------------------------------------------------------------------*/
+/*HISTORIAL*/
+.breadcrumbs {
+    max-width: 1200px;
+    margin: 20px auto 10px auto;
+    padding: 0 20px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.breadcrumbs a {
+    color: #333;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+/*PRODUCTOS*/
+.productos {
+    padding: 0px 50px;
+    padding-bottom: 20px;
+}
+
+.productos h1 {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.productos h1 span {
+    border-bottom: 4px solid rgb(49, 175, 104);
+}
+
+.contenedor-categorias {
+    display: flex;
+    gap: 20px;
+}
+
+.filtros-categorias {
+    flex: 0 0 270px;
+}
+
+.filtros-categorias ul {
+    margin-top: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #332a4d;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.filtros-categorias ul h2 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #727272;
+    text-align: center;
+}
+
+.filtros-categorias ul .sub-categoria {
+    margin-top: 30px;
+}
+
+.filtros-categorias li {
+    list-style: none;
+    cursor: pointer;
+    margin: 15px;
+    font-size: 1.17rem;
+    color: #555555;
+    transition: color 0.2s ease;
+}
+
+.filtros-categorias li:hover {
+    color: rgb(0, 77, 165);
+}
+
+.filtros-categorias ul .activo_filtro {
+    color: rgb(0, 77, 165);
+}
+
+.contenedor-productos {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 20px; 
+    padding: 20px;
+}
+
+.producto {
+    position: relative;
+    border: 1px solid #332a4d;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    height: 350px;
+    transition: box-shadow 0.3s ease;
+}
+
+.producto:hover {
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); 
+}
+
+.producto img {
+    width: 100%;
+    max-width: 100%;
+    height: 200px; 
+    object-fit: contain; 
+    margin-bottom: 15px;
+}
+
+.producto p {
+    color: #555555;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.producto h3 {
+    color: #111111;
+    margin: 10px 0 5px 0;
+}
+
+.producto .ver-más {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 98%;
+    height: 20%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.producto:hover .ver-más {
+    opacity: 1;
+}
+
+.btn-ver-más {
+    color: white;
+    background-color: rgb(49, 175, 104);
+    padding: 10px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    box-shadow: 0 0 10px rgba(219, 0, 0, 0.5);
+    transition: transform 0.2s, background-color 0.3s ease;
+}
+
+.btn-ver-más:hover {
+    background-color: rgb(0, 77, 165);
+    transform: scale(1.05);
+}
+
+.compra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 10px;
+}
+
+.compra h3 {
+    color: rgb(0, 77, 165);
+    margin: 10px 0 5px 0;
+}
+
+.compra .añadir-carrito a {
+    color: white;
+    background-color: rgb(49, 175, 104);
+    padding: 10px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    box-shadow: 0 0 10px rgba(219, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+.compra .añadir-carrito a:hover {
+    color: #ffffff;
+    background-color: rgb(0, 77, 165);
+}
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+/*DETALLE PRODUCTO*/
+.contenedor-producto {
+    max-width: 1200px;
+    margin: 20px auto 50px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.galeria-producto {
+    display: flex;
+    gap: 15px;
+}
+
+.miniaturas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.miniaturas img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.miniaturas img:hover {
+    border-color: #000;
+}
+
+.imagen-principal {
+    flex: 1;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.imagen-principal img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.detalles-producto {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.detalles-producto .marca {
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #777;
+}
+
+.detalles-producto h1 {
+    font-size: 2rem;
+    margin: 0;
+    color: #222;
+}
+
+.valoracion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.precio-sku {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.precio {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: rgb(0, 77, 165);
+}
+
+.sku {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.opciones-variantes {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.btn-marca,
+.btn-variante {
+    padding: 10px 20px;
+    border: 2px solid #ccc;
+    background: #fff;
+    color: #333;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.25s ease-in-out;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.btn-marca:hover,
+.btn-variante:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+}
+
+.btn-marca:hover:nth-child(2),
+.btn-marca.activa-lipigas {
+    background-color: #ffcc00;
+    border-color: #e6b800;
+    color: #1a1a1a;
+}
+
+.btn-marca:hover:nth-child(1),
+.btn-marca.activa-gasco {
+    background-color: #ffffff;
+    border-color: #00529b;
+    color: #00529b;
+    box-shadow: 0 0 10px rgba(0, 82, 155, 0.3);
+}
+
+.btn-marca:hover:nth-child(3),
+.btn-marca.activa-abastible {
+    background-color: #ff6600;
+    border-color: #e05500;
+    color: #ffffff;
+}
+
+.btn-variante:hover,
+.btn-variante.activa {
+    background: #222;
+    color: #fff;
+    border-color: #222;
+}
+
+.acciones-compra {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.selector-cantidad {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.selector-cantidad button {
+    border: none;
+    background: #f4f4f4;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.selector-cantidad input {
+    width: 40px;
+    border: none;
+    text-align: center;
+    font-size: 1rem;
+    -moz-appearance: textfield;
+}
+
+.btn-anadir-carrito {
+    flex: 1;
+    background: rgb(49, 175, 104);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.3s;
+}
+
+.btn-anadir-carrito:hover {
+    background: rgb(0, 77, 165);
+}
+
+.btn-favorito {
+    background: transparent;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: rgb(49, 175, 104);
+    transition: all 0.2s;
+}
+
+.btn-favorito:hover {
+    color: rgb(0, 77, 165);
+    border-color: rgb(0, 77, 165);
+}
+
+.acordeon-info {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.acordeon-info details {
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+}
+
+.acordeon-info summary {
+    cursor: pointer;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    user-select: none;
+}
+
+.acordeon-info p, .acordeon-info ul {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+}
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+/*LOGIN*/
+.login {
+    background-image: url(../img/login-register.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.contenedor-login {
+    position: relative;
+    width: 100%;
+    max-width: 360px; 
+    display: flex;
+    justify-content: center;
+    margin: auto 0;
+    padding: 40px 0;
+}
+
+.contenedor-login fieldset {
+    background-color: #eef5fc;
+    border: 2px solid rgb(0, 77, 165);
+    border-radius: 16px;
+    padding: 30px 25px; 
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor-login legend {
+    color: rgb(0, 77, 165);
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 0;
+    margin-bottom: 20px; 
+    float: left;        
+    width: 100%;
+    text-align: center; 
+}
+
+.contenedor-login label {
+    display: block;
+    color: #2c5282;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 18px; 
+    margin-bottom: 6px;
+}
+
+.contenedor-login input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 11px 12px; 
+    border: 1.5px solid #b3cde0;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    outline: none;
+    background-color: #f7fafc;
+    transition: border-color 0.3s ease;
+}
+
+.contenedor-login input:focus {
+    border-color: rgb(0, 77, 165);
+    background-color: #ffffff;
+}
+
+.contenedor-login button {
+    width: 100%;
+    background-color: rgb(49, 175, 104);
+    color: white;
+    font-size: 0.95rem;
+    font-weight: bold;
+    padding: 12px;
+    border: 1px solid rgb(49, 175, 104);
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 15px; 
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease;
+}
+
+.contenedor-login button:hover {
+    background-color: rgb(0, 77, 165);
+    border-color: rgb(0, 77, 165);
+}
+
+.contenedor-login .volver {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.contenedor-login .volver a {
+    color: rgb(0, 77, 165);
+}
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+/*REGISTRO*/
+.registro {
+    background-image: url(../img/login-register.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.registro::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.contenedor-registro {
+    position: relative;
+    width: 100%;
+    max-width: 360px; 
+    display: flex;
+    justify-content: center;
+    margin: auto 0;
+}
+
+.contenedor-registro fieldset {
+    background-color: #eef5fc;
+    border: 2px solid rgb(0, 77, 165);
+    border-radius: 16px;
+    padding: 30px 25px; 
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor-registro legend {
+    color: rgb(0, 77, 165);
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 0;
+    margin-bottom: 20px; 
+    float: left;        
+    width: 100%;
+    text-align: center; 
+}
+
+.contenedor-registro label {
+    display: block;
+    color: #2c5282;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 12px; 
+    margin-bottom: 4px;
+}
+
+.contenedor-registro input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 12px; 
+    border: 1.5px solid #b3cde0;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    outline: none;
+    background-color: #f7fafc;
+    transition: border-color 0.3s ease;
+}
+
+.contenedor-registro input:focus {
+    border-color: rgb(0, 77, 165);
+    background-color: #ffffff;
+}
+
+.contenedor-registro button {
+    width: 100%;
+    background-color: rgb(49, 175, 104);
+    color: white;
+    font-size: 0.95rem;
+    font-weight: bold;
+    padding: 12px;
+    border: 1px solid rgb(49, 175, 104);
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 15px; 
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease;
+}
+
+.contenedor-registro button:hover {
+    background-color: rgb(0, 77, 165);
+    border-color: rgb(0, 77, 165);
+}
+
+.contenedor-registro .volver {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.contenedor-registro .volver a {
+    color: rgb(0, 77, 165);
+}
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+/*FOOTER*/
 footer {
     background-color: #141414;
     display: inline-block;
@@ -560,3 +1244,4 @@ footer .derechos-autor {
 footer .derechos-autor p {
     color: white;
 }
+/*------------------------------------------------------------------*/

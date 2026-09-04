@@ -3,129 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de usuario</title>
-    <link rel="stylesheet" href="./css/registro.css">
+    <title>Registro | Gas El Volcán</title>
+    <link rel="shortcut icon" href="img/icono.png" />
+    <link rel="stylesheet" href="./css/estilos.css">
 </head>
 <body>
-     <header>
-  <div class="contenedor-img">
-            <a href="index.html"><img src="./img/logo-navbar.png" alt="logo-navbar"></a>
-        </div>
+    <div class="registro">
+        <form class="contenedor-registro" id="registroUsuario"> 
+            <fieldset>
+                <legend>Registro de Usuario</legend>
 
-        <nav class="contenedor-nav">
-            <ul class="lista-nav">
-                <li><a id="activo" href="index.html">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#catalogo">Catálogo</a></li>
-                <li><a href="./productos.html">Productos</a></li>
-                <li><a href="#contactos">Contactos</a></li>
-            </ul>
-        </nav>
+                <br />
 
-        <div class="contenedor-nav-secundario">
-            <ul class="lista-nav-secundario">
-                <li><a href="index.html"><i class="fa-solid fa-heart"></i></a></li>
-                <li><a href="index.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                <li><a href="login.html"><i class="fa-solid fa-circle-user"></i></a></li>
-            </ul>
-        </div>
-    </header>
+                <label>Nombre Completo</label>
+                <input type ="text" placeholder="Ingrese nombre completo" required id ="nombre">
+                
+                <br />
 
-    <form id="registroUsuario"> 
-        <fieldset>
-            <legend>Registro de usuario</legend>
-<br />
-            <label>Nombre Completo</label>
-            <input type ="text"
-            placeholder="Ingrese nombre completo"
-            required
-            id ="nombre">
-<br />
-            <label>Usuario</label>
-            <input type ="text"
-            placeholder="Ingrese nombre de usuario"
-            required
-            id ="usuario">
-<br />
-            <label>Correo electrónico</label>
-            <input type ="email"
-            placeholder="Ingrese correo electrónico"
-            required
-            id="correo">
+                <label>Usuario</label>
+                <input type ="text" placeholder="Ingrese nombre de usuario" required id ="usuario">
 
-<br /> 
-            <label>Telefono</label>
-            <input type ="tel"
-            required
-            id="telefono">
-<br />
-            <label>Fecha de nacimiento</label>
-            <input type ="date"
-            required
-            id="fechaNacimiento">
-<br />
-            <label>Contraseña</label>
-            <input type ="password"
-            required
-            id="contrasena">
-<br />
-            <button type="submit">Registrarse</button>
-<br />
-            <button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button>
-        </fieldset>
-    </form>
-    <footer>
-        <div class="informacion">
-            <div class="descripcion">
-                <div class="logo">
-                    <img src="./img/logo-navbar.png" alt="Gas el Volcan">
+                <br />
+
+                <label>Correo Electrónico</label>
+                <input type ="email" placeholder="Ingrese correo electrónico" required id="correo">
+
+                <br />
+
+                <label>Teléfono</label>
+                <input type ="tel" placeholder="Ingrese teléfono ej: +569xxxxxxxx" id="telefono">
+
+                <br />
+
+                <label>Fecha de Nacimiento</label>
+                <input type ="date" required id="fechaNacimiento">
+
+                <br />
+
+                <label>Contraseña</label>
+                <input type ="password" placeholder="Ingrese contraseña" required id="contrasena">
+
+                <br />
+
+                <button type="submit">Registrarse</button>
+
+                <br />
+
+                <button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button>
+
+                <div class="volver">
+                    <a href="index.html">Volver al Inicio</a>
                 </div>
-                <div class="texto">
-                    <p>Gas el Volcan es tu aliado en el suministro de gas licuado para el hogar y la industria. Más de 10 años garantizando entregas seguras y puntuales 24/7.</p>
-                </div>
-            </div>
+            </fieldset>
+        </form>
+    </div>
 
-            <div class="navegacion">
-                <h2>Menú</h2>
-                <div class="filas">
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="#nosotros">Nosotros</a></li>
-                        <li><a href="#catalogo">Catálogo</a></li>
-                        <li><a href="productos.html">Productos</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="#contactos">Contactos</a></li>
-                        <li><a href="index.html">Favoritos</a></li>
-                        <li><a href="index.html">Carrito</a></li>
-                        <li><a href="login.html">Cuenta</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="direccion">
-                <h2>Dirección y Redes</h2>
-                <div class="filas">
-                    <ul>
-                        <li><a href="index.html"><i class="fa-solid fa-location-dot"></i> Av. Vicuña Mackenna 2450, Local 18, Santiago, Chile</a></li>
-                        <li><a href="index.html"><i class="fa-solid fa-phone"></i> +569 3650 9979</a></li>
-                        <li class="redes">
-                            <a href="index.html">
-                                <i class="fa-brands fa-instagram"></i> 
-                                <i class="fa-brands fa-facebook"></i> 
-                                <i class="fa-brands fa-tiktok"></i> 
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="derechos-autor">
-            <p>Copyright © 2026 Gas el Volcan | Desarrollado por Ping&Lag</p>
-        </div>
-    </footer>
     <script src="./js/registro.js"></script>
 </body>
 </html>

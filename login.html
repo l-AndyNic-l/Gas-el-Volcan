@@ -3,109 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio Sesión</title>
-    <link rel="stylesheet" href="./css/login.css">
+    <title>Inicio Sesión | Gas El Volcán</title>
+    <link rel="shortcut icon" href="img/icono.png" />
+    <link rel="stylesheet" href="./css/estilos.css">
 </head>
 <body>
-    <header>
-  <div class="contenedor-img">
-            <a href="index.html"><img src="./img/logo-navbar.png" alt="logo-navbar"></a>
-        </div>
+    <div class="login">
+        <form class="contenedor-login" id="inicioSesion"> 
+            <fieldset>
+                <legend>Inicio de sesión</legend>
 
-        <nav class="contenedor-nav">
-            <ul class="lista-nav">
-                <li><a id="activo" href="index.html">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#catalogo">Catálogo</a></li>
-                <li><a href="./productos.html">Productos</a></li>
-                <li><a href="#contactos">Contactos</a></li>
-            </ul>
-        </nav>
+                <br />
 
-        <div class="contenedor-nav-secundario">
-            <ul class="lista-nav-secundario">
-                <li><a href="index.html"><i class="fa-solid fa-heart"></i></a></li>
-                <li><a href="index.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                <li><a href="login.html"><i class="fa-solid fa-circle-user"></i></a></li>
-            </ul>
-        </div>
-    </header>
+                <label>Usuario o Correo electrónico</label>
+                <input type ="text" placeholder="Ingrese nombre de usuario o correo" required id ="usuario">
 
-    <form id="inicioSesion"> 
-        <fieldset>
-            <legend>Inicio de sesión</legend>
-<br />
-            <label>Usuario o Correo electrónico</label>
-            <input type ="text"
-            placeholder="Nombre de usuario o correo"
-            required
-            id ="usuario">
+                <br />
 
-<br />
-            <label>Contraseña</label>
-            <input type ="password"
-            required
-            id="Contrasena">
-<br />
-            <button type="button" onclick="window.location.href='registro.html'">Registrarse</button>
-<br />
-            <button type ="submit">Iniciar sesión</button>
-        </fieldset>
+                <label>Contraseña</label>
+                <input type ="password" placeholder="Ingrese contraseña" required id="contrasena">
 
-    </form>
-    <footer>
-        <div class="informacion">
-            <div class="descripcion">
-                <div class="logo">
-                    <img src="./img/logo-navbar.png" alt="Gas el Volcan">
+                <br />
+
+                <button type ="submit">Iniciar sesión</button>
+                
+                <br />
+                
+                <button type="button" onclick="window.location.href='registro.html'">Registrarse</button>
+
+                <div class="volver">
+                    <a href="index.html">Volver al Inicio</a>
                 </div>
-                <div class="texto">
-                    <p>Gas el Volcan es tu aliado en el suministro de gas licuado para el hogar y la industria. Más de 10 años garantizando entregas seguras y puntuales 24/7.</p>
-                </div>
-            </div>
+            </fieldset>
+        </form>
+    </div>
 
-            <div class="navegacion">
-                <h2>Menú</h2>
-                <div class="filas">
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="#nosotros">Nosotros</a></li>
-                        <li><a href="#catalogo">Catálogo</a></li>
-                        <li><a href="productos.html">Productos</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="#contactos">Contactos</a></li>
-                        <li><a href="index.html">Favoritos</a></li>
-                        <li><a href="index.html">Carrito</a></li>
-                        <li><a href="login.html">Cuenta</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="direccion">
-                <h2>Dirección y Redes</h2>
-                <div class="filas">
-                    <ul>
-                        <li><a href="index.html"><i class="fa-solid fa-location-dot"></i> Av. Vicuña Mackenna 2450, Local 18, Santiago, Chile</a></li>
-                        <li><a href="index.html"><i class="fa-solid fa-phone"></i> +569 3650 9979</a></li>
-                        <li class="redes">
-                            <a href="index.html">
-                                <i class="fa-brands fa-instagram"></i> 
-                                <i class="fa-brands fa-facebook"></i> 
-                                <i class="fa-brands fa-tiktok"></i> 
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="derechos-autor">
-            <p>Copyright © 2026 Gas el Volcan | Desarrollado por Ping&Lag</p>
-        </div>
-    </footer>
-    <script src="./js/login.js"></script>
-    
+    <script src="./js/login.js"></script>  
 </body>
 </html>
