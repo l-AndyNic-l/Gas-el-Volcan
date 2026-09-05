@@ -1,31 +1,36 @@
 function filtrar(categoria) {
-    let idElemento = "filter-" + categoria.toLowerCase();
+    let filtro = document.getElementById(categoria);
     
-    if (categoria === "Todo") idElemento = "filter-todo";
-
-    const filtroBtn = document.getElementById(idElemento);
-
-    document.querySelectorAll('.filtros-categorias li').forEach(el => {
+    document.querySelectorAll(`[class="activo_filtro"]`).forEach(el => {
         el.classList.remove("activo_filtro");
     });
 
-    if (filtroBtn) {
-        filtroBtn.classList.add("activo_filtro");
-    }
+    filtro.classList.add("activo_filtro");
 
-    const productos = document.querySelectorAll('.producto');
-
-    productos.forEach(el => {
-        const marcaProducto = (el.getAttribute('data-marca') || '').toLowerCase();
-        const pesoProducto = (el.getAttribute('data-peso') || '').toLowerCase();
-        const busqueda = categoria.toLowerCase();
-
-        if (categoria === "Todo") {
+    if (categoria == "Todo") {
+        document.querySelectorAll(`[class="producto"]`).forEach(el => {
             el.style.display = 'flex';
-        } else if (marcaProducto === busqueda || pesoProducto === busqueda) {
-            el.style.display = 'flex';
-        } else {
+        });
+
+        return;
+
+    } else {
+            
+        document.querySelectorAll(`[class="producto"]`).forEach(el => {
             el.style.display = 'none';
-        }
-    });
-}
+        });
+
+        if (categoria == "Abastible" || categoria == "Gasco" || categoria == "Lipigas") {
+            document.querySelectorAll(`[data-marca="${categoria}"]`).forEach(el => {
+                el.style.display = 'flex';
+            });
+
+        } else {
+            document.querySelectorAll(`[data-peso="${categoria}"]`).forEach(el => {
+                el.style.display = 'flex';
+            });
+        };
+
+    };
+
+};

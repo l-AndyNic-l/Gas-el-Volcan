@@ -1,27 +1,23 @@
 let login = document.getElementById('inicioSesion');
-let usuario = document.getElementById('usuario');
+let correo = document.getElementById('correo');
 let contrasena = document.getElementById('contrasena');
 
-login.addEventListener("submit", function(event){
+login.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    let usuarioRegistrado = localStorage.getItem("usuarioGuardado");
-    let correoRegistrado = localStorage.getItem("correoGuardado");
-    let contrasenaRegistrada = localStorage.getItem("contrasenaGuardada");
-
-    if (usuario.value !== usuarioRegistrado && correo.value !== correoRegistrado) {
-        alert("Su usuario o correo electrónico no existe o está incorrecto.");
-        usuario.focus();
+    if (!/^[^\s@]+(@gmail\.com)|(@duocuc\.cl)$/.test(correo.value)) {
+        alert("¡Correo ingresado no es válido, debe ser del dominio de gmail.com o duocuc.cl!");
+        correo.focus();
         return;
     };
 
-    if (contrasena.value !== contrasenaRegistrada) {
-        alert("Su cuenta o contraseña no es correcta.");
+    if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$%^&*,._#-]).{8,}$/.test(contrasena.value)) {
+        alert("¡Contraseña ingresada no es válida, debe tener un largo mínimo de 8 caracteres y entrer ellos una letra, número y carácter especial!")
         contrasena.focus();
         return;
     };
 
     alert("¡Inicio de sesión exitoso!");
-    usuario.value = "";
-    contrasena.value = "";
+    window.location.href = "index.html";
+
 });

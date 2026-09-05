@@ -115,11 +115,11 @@
         <h1 class="titulo"><span>Contáctanos</span> a Nuestras Redes</h1>
         <div class="contenedor-contactos">
             <div class="contactos-formulario">
-                <form onsubmit="event.preventDefault(); alert('Mensaje enviado correctamente.');">
+                <form id="mensaje">
                     <label>Correo:</label>
-                    <input type="email" placeholder="Escribe tu correo..." required />
+                    <input id="correo" type="email" placeholder="Escribe tu correo..." required />
                     <label>Mensaje:</label>
-                    <textarea placeholder="Escribe tu mensaje..." required></textarea>
+                    <textarea id="texto" placeholder="Escribe tu mensaje..." required></textarea>
                     <div class="btn-redes-sociales">
                         <button type="submit">Enviar</button>
                         <ul>
@@ -194,5 +194,6 @@
     </footer>
 
     <script src="./js/descripcion.js"></script>
+    <script src="./js/mensaje.js"></script>
 </body>
 </html>
