@@ -10,12 +10,12 @@ const productosDB = {
             descripcion: "Duración de 34hrs en uso de cocina (Fuego alto)"
         },
         "11kg": {
-            precio: "$21.000",
+            precio: "$18.000",
             sku: "SKU: GAS-11KG",
             descripcion: "Duración de 75hrs en uso de cocina (Fuego alto)"
         },
         "15kg": {
-            precio: "$23.000",
+            precio: "$26.000",
             sku: "SKU: GAS-15KG",
             descripcion: "Duración de 102hrs en uso de cocina (Fuego alto)"
         }
@@ -24,17 +24,17 @@ const productosDB = {
         nombre: "Lipigas",
         imagen: "./img/lipigas15.png",
         "5kg": {
-            precio: "$11.000",
+            precio: "$10.000",
             sku: "SKU: LIP-5KG",
             descripcion: "Duración de 34hrs en uso de cocina (Fuego alto)"
         },
         "11kg": {
-            precio: "$21.000",
+            precio: "$19.000",
             sku: "SKU: LIP-11KG",
             descripcion: "Duración de 75hrs en uso de cocina (Fuego alto)"
         },
         "15kg": {
-            precio: "$23.000",
+            precio: "$25.000",
             sku: "SKU: LIP-15KG",
             descripcion: "Duración de 102hrs en uso de cocina (Fuego alto)"
         }

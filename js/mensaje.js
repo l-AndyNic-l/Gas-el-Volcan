@@ -11,7 +11,7 @@ mensaje.addEventListener("submit", function(event) {
         return;
     };
 
-    if (texto.value.length < 10 ) {
+    if (texto.value.trim().length < 10 ) {
         alert("¡Mensaje ingresado no es válido, debe de tener al menos 10 carácteres!");
         texto.focus();
         return;
