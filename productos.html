@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | Gas El Volcán</title>
+    <link rel="shortcut icon" href="img/icono.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor-img">
+            <a href="index.html"><img src="./img/logo-navbar.png" alt="logo-navbar"></a>
+        </div>
+
+        <nav class="contenedor-nav">
+            <ul class="lista-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#catalogo">Catálogo</a></li>
+                <li><a id="activo" href="productos.html">Productos</a></li>
+                <li><a href="index.html#contactos">Contactos</a></li>
+            </ul>
+        </nav>
+
+        <div class="contenedor-nav-secundario">
+            <ul class="lista-nav-secundario">
+                <li><a href="index.html"><i class="fa-solid fa-heart"></i></a></li>
+                <li><a href="index.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href="login.html"><i class="fa-solid fa-circle-user"></i></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs">
+        <a href="index.html">Inicio</a> / 
+        <a href="productos.html">Productos</a> 
+    </nav>
+
+    <section class="productos">
+        <h1 class="titulo"><span>Cilindros</span> de Gas Licuado</h1>
+        <div class="contenedor-categorias">
+            <div class="filtros-categorias">
+                <ul>
+                    <h2>Categoría Marca</h2>
+                    <li id="Todo" onclick="filtrar('Todo')" class="activo_filtro">Todo</li>
+                    <li id="Gasco" onclick="filtrar('Gasco')">Gasco</li>
+                    <li id="Lipigas" onclick="filtrar('Lipigas')">Lipigas</li>
+                    <li id="Abastible" onclick="filtrar('Abastible')">Abastible</li>
+                    
+                    <h2 class="sub-categoria">Categoría Kg</h2>
+                    <li id="5kg" onclick="filtrar('5kg')">Cilindro de 5kg</li>
+                    <li id="11kg" onclick="filtrar('11kg')">Cilindro de 11kg</li>
+                    <li id="15kg" onclick="filtrar('15kg')">Cilindro de 15kg</li>
+                </ul>
+            </div>
+
+            <div class="contenedor-productos">
+            
+                <article data-marca="Gasco" data-peso="5kg" class="producto">
+                    <div class="ver-más">
+                        <a href="producto.html?marca=gasco&peso=5kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
+                    </div>
+                    <img src="./img/gasco5.webp" alt="Gasco 5kg"/>
+                    <p>Gasco</p>
+                    <h3>Cilindro de 5kg</h3>
+                    <div class="compra">
+                        <h3 class="precio">$11.000</h3>
+                        <div class="añadir-carrito">
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Gasco 5kg al carrito');">Añadir al Carrito</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article data-marca="Lipigas" data-peso="15kg" class="producto">
+                    <div class="ver-más">
+                        <a href="producto.html?marca=lipigas&peso=15kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
+                    </div>
+                    <img src="./img/lipigas15.png" alt="Lipigas 15kg"/>
+                    <p>Lipigas</p>
+                    <h3>Cilindro de 15kg</h3>
+                    <div class="compra">
+                        <h3 class="precio">$26.000</h3>
+                        <div class="añadir-carrito">
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Lipigas 15kg al carrito');">Añadir al Carrito</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article data-marca="Abastible" data-peso="15kg" class="producto">
+                    <div class="ver-más">
+                        <a href="producto.html?marca=abastible&peso=15kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
+                    </div>
+                    <img src="./img/abastible15.png" alt="Abastible 15kg"/>
+                    <p>Abastible</p>
+                    <h3>Cilindro de 15kg</h3>
+                    <div class="compra">
+                        <h3 class="precio">$23.000</h3>
+                        <div class="añadir-carrito">
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Abastible 15kg al carrito');">Añadir al Carrito</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article data-marca="Lipigas" data-peso="5kg" class="producto">
+                    <div class="ver-más">
+                        <a href="producto.html?marca=lipigas&peso=5kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
+                    </div>
+                    <img src="./img/lipigas5.png" alt="Lipigas 5kg"/>
+                    <p>Lipigas</p>
+                    <h3>Cilindro de 5kg</h3>
+                    <div class="compra">
+                        <h3 class="precio">$11.000</h3>
+                        <div class="añadir-carrito">
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Lipigas 5kg al carrito');">Añadir al Carrito</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article data-marca="Gasco" data-peso="15kg" class="producto">
+                    <div class="ver-más">
+                        <a href="producto.html?marca=gasco&peso=15kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
+                    </div>
+                    <img src="./img/gasco15.webp" alt="Gasco 15kg"/>
+                    <p>Gasco</p>
+                    <h3>Cilindro de 15kg</h3>
+                    <div class="compra">
+                        <h3 class="precio">$26.000</h3>
+                        <div class="añadir-carrito">
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Gasco 15kg al carrito');">Añadir al Carrito</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article data-marca="Abastible" data-peso="11kg" class="producto">
+                    <div class="ver-más">
+                        <a href="producto.html?marca=abastible&peso=11kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
+                    </div>
+                    <img src="./img/abastible11.webp" alt="Abastible 11kg"/>
+                    <p>Abastible</p>
+                    <h3>Cilindro de 11kg</h3>
+                    <div class="compra">
+                        <h3 class="precio">$21.000</h3>
+                        <div class="añadir-carrito">
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Abastible 11kg al carrito');">Añadir al Carrito</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article data-marca="Abastible" data-peso="5kg" class="producto">
+                    <div class="ver-más">
+                        <a href="producto.html?marca=abastible&peso=5kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
+                    </div>
+                    <img src="./img/abastible5.jpg" alt="Abastible 5kg"/>
+                    <p>Abastible</p>
+                    <h3>Cilindro de 5kg</h3>
+                    <div class="compra">
+                        <h3 class="precio">$11.000</h3>
+                        <div class="añadir-carrito">
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Abastible 5kg al carrito');">Añadir al Carrito</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article data-marca="Lipigas" data-peso="11kg" class="producto">
+                    <div class="ver-más">
+                        <a href="producto.html?marca=lipigas&peso=11kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
+                    </div>
+                    <img src="./img/lipigas11.webp" alt="Lipigas 11kg"/>
+                    <p>Lipigas</p>
+                    <h3>Cilindro de 11kg</h3>
+                    <div class="compra">
+                        <h3 class="precio">$19.000</h3>
+                        <div class="añadir-carrito">
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Lipigas 11kg al carrito');">Añadir al Carrito</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article data-marca="Gasco" data-peso="11kg" class="producto">
+                    <div class="ver-más">
+                        <a href="producto.html?marca=gasco&peso=11kg" class="btn-ver-más" title="Ver producto"><i class="fa-solid fa-eye"></i></a>
+                    </div>
+                    <img src="./img/gas-11gasco.webp" alt="Gasco 11kg"/>
+                    <p>Gasco</p>
+                    <h3>Cilindro de 11kg</h3>
+                    <div class="compra">
+                        <h3 class="precio">$18.000</h3>
+                        <div class="añadir-carrito">
+                            <a href="#" onclick="event.preventDefault(); alert('Añadido Gasco 11kg al carrito');">Añadir al Carrito</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="informacion">
+            <div class="descripcion">
+                <div class="logo">
+                    <img src="./img/logo-navbar.png" alt="Gas el Volcan">
+                </div>
+                <div class="texto">
+                    <p>Gas El Volcán, una empresa familiar con más de 25 años de experiencia en la distribución de gas licuado a domicilio en Chillán y la Región de Ñuble. Desde 1998, llevamos energía y calidez a hogares y comercios.</p>
+                </div>
+            </div>
+
+            <div class="navegacion">
+                <h2>Menú</h2>
+                <div class="filas">
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.html#nosotros">Nosotros</a></li>
+                        <li><a href="index.html#catalogo">Catálogo</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="index.html#contactos">Contactos</a></li>
+                        <li><a href="index.html">Favoritos</a></li>
+                        <li><a href="index.html">Carrito</a></li>
+                        <li><a href="login.html">Cuenta</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="direccion">
+                <h2>Dirección y Redes</h2>
+                <div class="filas">
+                    <ul>
+                        <li><a href="index.html"><i class="fa-solid fa-location-dot"></i> Av. Vicuña Mackenna 2450, Local 18, Santiago, Chile</a></li>
+                        <li><a href="index.html"><i class="fa-solid fa-phone"></i> +569 3650 9979</a></li>
+                        <li class="redes">
+                            <a href="index.html">
+                                <i class="fa-brands fa-instagram"></i> 
+                                <i class="fa-brands fa-facebook"></i> 
+                                <i class="fa-brands fa-tiktok"></i> 
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="derechos-autor">
+            <p>Copyright © 2026 Gas El Volcán | Desarrollado por Ping&Lag</p>
+        </div>
+    </footer>
+
+    <script src="./js/productos.js"></script>
+</body>
+</html>

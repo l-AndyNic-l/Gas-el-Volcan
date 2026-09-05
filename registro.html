@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Gas El Volcán</title>
+    <link rel="shortcut icon" href="img/icono.png" />
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+    <div class="registro">
+        <form class="contenedor-registro" id="registroUsuario"> 
+            <fieldset>
+                <legend>Registro de Usuario</legend>
+
+                <br />
+
+                <label>Nombre Completo:</label>
+                <input type ="text" placeholder="Ingrese su nombre completo" id ="nombre" required>
+                
+                <br />
+
+                <label>Usuario:</label>
+                <input type ="text" placeholder="Ingrese su nombre de usuario" id ="usuario" required>
+
+                <br />
+
+                <label>Correo Electrónico:</label>
+                <input type ="email" placeholder="Ingrese su correo electrónico" id="correo" required>
+
+                <br />
+
+                <label>Teléfono:</label>
+                <input type ="tel" placeholder="Ingrese su teléfono ej: +56912345678" id="telefono" required>
+
+                <br />
+
+                <label>Fecha de Nacimiento:</label>
+                <input type ="date" id="fechaNacimiento" required>
+
+                <br />
+
+                <label>Contraseña:</label>
+                <input type ="password" placeholder="Ingrese su contraseña" id="contrasena" required>
+
+                <br />
+
+                <button type="submit">Registrarse</button>
+
+                <br />
+
+                <button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button>
+
+                <div class="volver">
+                    <a href="index.html">Volver al Inicio</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <script src="./js/registro.js"></script>
+</body>
+</html>

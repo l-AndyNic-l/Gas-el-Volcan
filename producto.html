@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto | Gas el Volcan</title>
+    <link rel="shortcut icon" href="img/icono.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body class="body-login">
+
+    <header>
+        <div class="contenedor-img">
+            <a href="index.html"><img src="./img/logo-navbar.png" alt="logo-navbar"></a>
+        </div>
+
+        <nav class="contenedor-nav">
+            <ul class="lista-nav">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#catalogo">Catálogo</a></li>
+                <li><a href="./productos.html" id="activo">Productos</a></li>
+                <li><a href="index.html#contactos">Contactos</a></li>
+            </ul>
+        </nav>
+
+        <div class="contenedor-nav-secundario">
+            <ul class="lista-nav-secundario">
+                <li><a href="index.html"><i class="fa-solid fa-heart"></i></a></li>
+                <li><a href="index.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href="login.html"><i class="fa-solid fa-circle-user"></i></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs">
+        <a href="index.html">Inicio</a> / 
+        <a href="productos.html">Productos</a> / 
+        <span id="breadcrumb-producto">Gasco - 5kg</span>
+    </nav>
+
+    <main class="contenedor-producto">
+        <section class="galeria-producto">
+            <div class="miniaturas">
+                <img id="img-thumb-1" src="./img/gas-11gasco.webp" alt="Vista previa 1">
+                <img id="img-thumb-2" src="./img/gas-11gasco.webp" alt="Vista previa 2">
+            </div>
+            <div class="imagen-principal">
+                <img id="img-principal" src="./img/gas-11gasco.webp" alt="Cilindro de gas">
+            </div>
+        </section>
+
+        <section class="detalles-producto">
+            <span class="marca" id="txt-marca">GASCO</span>
+            <h1 id="txt-titulo">Cilindro de Gas 5kg</h1>
+            
+            <div class="valoracion">
+                <div class="estrellas">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <span class="resenas">(15 Valoraciones)</span>
+            </div>
+
+            <div class="precio-sku">
+                <span class="precio" id="txt-precio">$11.000</span>
+                <span class="sku" id="txt-sku">SKU: GAS-5KG</span>
+            </div>
+
+            <div class="variantes">
+                <p><strong>Selecciona la Marca:</strong></p>
+                <div class="opciones-variantes" id="contenedor-marcas">
+                    <button type="button" class="btn-marca" onclick="cambiarMarca('Gasco')">Gasco</button>
+                    <button type="button" class="btn-marca" onclick="cambiarMarca('Lipigas')">Lipigas</button>
+                    <button type="button" class="btn-marca" onclick="cambiarMarca('Abastible')">Abastible</button>
+                </div>
+
+                <p style="margin-top: 15px;"><strong>Selecciona el Formato:</strong></p>
+                <div class="opciones-variantes" id="contenedor-formatos">
+                    <button type="button" class="btn-variante" onclick="cambiarFormato('5kg')">5kg</button>
+                    <button type="button" class="btn-variante" onclick="cambiarFormato('11kg')">11kg</button>
+                    <button type="button" class="btn-variante" onclick="cambiarFormato('15kg')">15kg</button>
+                </div>
+            </div>
+
+            <div class="acciones-compra">
+                <div class="selector-cantidad">
+                    <button type="button" onclick="modificarCantidad(-1)">-</button>
+                    <input type="text" id="input-cantidad" value="1" min="1" readonly>
+                    <button type="button" onclick="modificarCantidad(1)">+</button>
+                </div>
+                <button type="button" onclick="agregarAlCarrito()" class="btn-anadir-carrito" id="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Añadir al Carrito</button>
+                <button type="button" class="btn-favorito" id="btn-favorito"><i class="fa-solid fa-heart"></i></button>
+            </div>
+
+            <div class="acordeon-info">
+                <details open>
+                    <summary><strong>DESCRIPCIÓN</strong></summary>
+                    <p id="txt-descripcion">Duración aproximada del cilindro en uso de cocina (fuego alto).</p>
+                </details>
+
+                <details>
+                    <summary><strong>DESPACHO Y COBERTURA</strong></summary>
+                    <p>Envíos express directos a tu hogar 24/7 en todo Chillán, Región de Ñuble.</p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="informacion">
+            <div class="descripcion">
+                <div class="logo">
+                    <img src="./img/logo-navbar.png" alt="Gas el Volcan">
+                </div>
+                <div class="texto">
+                    <p>Gas El Volcán, una empresa familiar con más de 25 años de experiencia en la distribución de gas licuado a domicilio en Chillán y la Región de Ñuble. Desde 1998, llevamos energía y calidez a hogares y comercios.</p>
+                </div>
+            </div>
+
+            <div class="navegacion">
+                <h2>Menú</h2>
+                <div class="filas">
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.html#nosotros">Nosotros</a></li>
+                        <li><a href="index.html#catalogo">Catálogo</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="index.html#contactos">Contactos</a></li>
+                        <li><a href="index.html">Favoritos</a></li>
+                        <li><a href="index.html">Carrito</a></li>
+                        <li><a href="login.html">Cuenta</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="direccion">
+                <h2>Dirección y Redes</h2>
+                <div class="filas">
+                    <ul>
+                        <li><a href="index.html"><i class="fa-solid fa-location-dot"></i> Av. Vicuña Mackenna 2450, Local 18, Santiago, Chile</a></li>
+                        <li><a href="index.html"><i class="fa-solid fa-phone"></i> +569 3650 9979</a></li>
+                        <li class="redes">
+                            <a href="index.html">
+                                <i class="fa-brands fa-instagram"></i> 
+                                <i class="fa-brands fa-facebook"></i> 
+                                <i class="fa-brands fa-tiktok"></i> 
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="derechos-autor">
+            <p>Copyright © 2026 Gas El Volcán | Desarrollado por Ping&Lag</p>
+        </div>
+    </footer>
+
+    <script src="./js/descripcion.js" defer></script>
+</body>
+</html>

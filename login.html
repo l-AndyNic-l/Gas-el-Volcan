@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio Sesión | Gas El Volcán</title>
+    <link rel="shortcut icon" href="img/icono.png" />
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+    <div class="login">
+        <form class="contenedor-login" id="inicioSesion"> 
+            <fieldset>
+                <legend>Inicio de sesión</legend>
+
+                <br />
+
+                <label>Correo Electrónico:</label>
+                <input type ="email" placeholder="Ingrese su correo" id ="correo" required>
+
+                <br />
+
+                <label>Contraseña:</label>
+                <input type ="password" placeholder="Ingrese su contraseña" id="contrasena" required>
+
+                <br />
+
+                <button type ="submit">Iniciar sesión</button>
+                
+                <br />
+                
+                <button type="button" onclick="window.location.href='registro.html'">Registrarse</button>
+
+                <div class="volver">
+                    <a href="index.html">Volver al Inicio</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <script src="./js/login.js"></script>  
+</body>
+</html>
