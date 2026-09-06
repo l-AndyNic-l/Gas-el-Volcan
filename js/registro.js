@@ -35,7 +35,7 @@ registro.addEventListener("submit", function(event){
 
     let fechaFormat = new Date(fechaNacimiento.value);
     let fechaActual = new Date();
-    let edad = actual.getFullYear() - fechaNac.getFullYear();
+    let edad = fechaActual.getFullYear() - fechaFormat.getFullYear();
 
     if (edad < 18) {
         alert("¡Fecha de nacimiento ingresada no válida, debes ser mayor de 18 años!");
