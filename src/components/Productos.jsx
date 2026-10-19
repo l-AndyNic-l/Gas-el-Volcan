@@ -3,14 +3,16 @@ import { useState } from 'react';
 import { filtros } from '../data/filtros';
 import FiltroProductos from './FiltroProductos';
 import GaleriaProductos from './GaleriaProductos';
-import { productos } from '../data/productos';
+import { useProductos } from './ProductosContent';
 import Seccion from './Seccion';
 
 function Productos() {
 
     const [filtroActivo, setFiltroActivo] = useState("todo");
 
-    const productosFiltrados = productos.filter((producto) => {
+    const { productos } = useProductos();
+
+    const productosFiltrados = productos.filter(producto => {
 
         if (filtroActivo === "todo") {
             return true;

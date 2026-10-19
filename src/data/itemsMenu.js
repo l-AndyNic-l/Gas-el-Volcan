@@ -8,7 +8,7 @@ export const itemsMenu = [
             label: 'Productos'
         },
         {
-            href: '/',
+            href: '/tienda',
             label: 'Tienda'
         },
         {
@@ -16,7 +16,7 @@ export const itemsMenu = [
             label: 'Nosotros'
         },
         {
-            href: '/',
+            href: '/#contactos',
             label: 'Contactos'
         }
     ]

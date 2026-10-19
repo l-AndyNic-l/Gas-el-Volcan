@@ -1,19 +1,22 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCarrito } from '../components/CarritoContent';
+import { useFavoritos } from "./FavoritoContent";
 
 function TarjetaProductos({ producto, seccion }) {
 
-    const [meGusta, setMeGusta] = useState(false);
+    const { agregarAlCarrito } = useCarrito();
+    const { alternarFavorito, esFavorito } = useFavoritos();
+
+    const meGusta = esFavorito(producto.sku);
 
     const alternar = () => {
-        setMeGusta(!meGusta);
+        alternarFavorito(producto);
     };
 
-    // Ruta dinámica según el producto seleccionado
     const rutaDetalle = `/productos/detalle-producto/${producto.sku}`;
 
-    // TARJETAS DE LA PÁGINA DE INICIO
     if (seccion === "Inicio") {
         return (
             <article className="tarjeta-catalogo">
@@ -40,14 +43,12 @@ function TarjetaProductos({ producto, seccion }) {
         );
     }
 
-    // TARJETAS DE LA PÁGINA PRODUCTOS
     return (
         <article
             id={producto.sku}
             className="producto"
         >
 
-            {/* BOTÓN VER DETALLES */}
             <div className="ver-más">
                 <Link
                     to={rutaDetalle}
@@ -58,7 +59,6 @@ function TarjetaProductos({ producto, seccion }) {
                 </Link>
             </div>
 
-            {/* BOTÓN FAVORITOS */}
             <div
                 className="ver-más"
                 style={{ marginTop: "50px" }}
@@ -85,19 +85,15 @@ function TarjetaProductos({ producto, seccion }) {
                 </button>
             </div>
 
-            {/* IMAGEN DEL PRODUCTO */}
             <img
                 src={producto.imagen}
                 alt={producto.nombre}
             />
 
-            {/* CATEGORÍA */}
             <p>{producto.categoria}</p>
 
-            {/* NOMBRE */}
             <h3>{producto.nombre}</h3>
 
-            {/* PRECIO Y CARRITO */}
             <div className="compra">
 
                 <h3 className="precio">
@@ -105,10 +101,13 @@ function TarjetaProductos({ producto, seccion }) {
                 </h3>
 
                 <div className="añadir-carrito">
-                    <Link to="/carrito">
-                        Carrito{" "}
+                    <button
+                        type="button"
+                        onClick={() => agregarAlCarrito(producto)}
+                    >
+                        Carrito
                         <i className="fa-solid fa-cart-shopping"></i>
-                    </Link>
+                    </button>
                 </div>
 
             </div>
