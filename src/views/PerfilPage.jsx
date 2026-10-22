@@ -1,4 +1,3 @@
-
 import Header from '../components/Header';
 import Perfil from '../components/Perfil';
 import Footer from '../components/Footer';
@@ -8,7 +7,7 @@ function PerfilPage() {
     return (
         <>
             <Header itemsMenu={itemsMenu} />
-            <Perfil />
+                <Perfil />
             <Footer />
         </>
     );

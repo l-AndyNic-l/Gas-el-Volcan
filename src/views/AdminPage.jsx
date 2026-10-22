@@ -1,4 +1,3 @@
-
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Admin from '../components/Admin';
@@ -8,7 +7,7 @@ function AdminPage() {
     return (
         <>
             <Header itemsMenu={itemsMenu} />
-            <Admin />
+                <Admin />
             <Footer itemsMenu={itemsMenu} />
         </>
     );

@@ -34,9 +34,7 @@ function    Favorito() {
             ) : (
 
                 <div className="lista-favoritos">
-
                     {favoritos.map(producto => (
-
                         <article
                             key={producto.sku}
                             className="tarjeta-favorito"
@@ -58,7 +56,6 @@ function    Favorito() {
                             </p>
 
                             <div className="acciones-favorito">
-
                                 <button
                                     type="button"
                                     className="btn-agregar-favorito"
@@ -78,15 +75,12 @@ function    Favorito() {
                                 </button>
 
                             </div>
-
                         </article>
 
                     ))}
-
                 </div>
 
             )}
-
         </main>
     );
 }

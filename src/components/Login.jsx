@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { iniciarSesion, obtenerSesion } from '../utils/Auth';
@@ -35,9 +34,7 @@ function Login() {
 
     return (
         <section className="login">
-
             <div className="contenedor-login">
-
                 <form onSubmit={manejarLogin}>
                     <fieldset>
 
@@ -89,12 +86,9 @@ function Login() {
                                 </Link>
                             </span>
                         </div>
-
                     </fieldset>
                 </form>
-
             </div>
-
         </section>
     );
 }

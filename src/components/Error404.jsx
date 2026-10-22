@@ -1,11 +1,9 @@
-
 import { Link } from 'react-router-dom';
 
 function Error404() {
 
     return (
         <section className="pagina-error">
-
             <div className="contenedor-error">
 
                 <h1>404</h1>
@@ -23,9 +21,7 @@ function Error404() {
                 <Link to="/" className="boton-volver-inicio">
                     Volver al Inicio
                 </Link>
-
             </div>
-
         </section>
     );
 }

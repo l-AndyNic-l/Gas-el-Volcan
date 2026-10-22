@@ -1,10 +1,10 @@
-
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Registro = () => {
 
+    const navigate = useNavigate()
     const [tipoCliente, setTipoCliente] = useState("particular");
     const [tieneLocal, setTieneLocal] = useState("no");
     const [clave, setClave] = useState("");
@@ -23,21 +23,21 @@ const Registro = () => {
 
         // Aquí irá la conexión con el backend
         // para registrar al usuario.
+
+        navigate("/");
     };
 
     return (
         <section className="registro">
-
             <div className="contenedor-registro">
-
                 <Form onSubmit={registrar}>
                     <fieldset>
-
                         <legend>Crear Cuenta</legend>
 
                         <Form.Group className="mb-3">
-                            <Form.Label>Nombre:</Form.Label>
+                            <Form.Label htmlFor='nombre'>Nombre:</Form.Label>
                             <Form.Control
+                                id="nombre"
                                 type="text"
                                 name="nombre"
                                 placeholder="Ingrese su nombre"
@@ -46,8 +46,9 @@ const Registro = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Label>Apellido:</Form.Label>
+                            <Form.Label htmlFor='apellido'>Apellido:</Form.Label>
                             <Form.Control
+                                id="apellido"
                                 type="text"
                                 name="apellido"
                                 placeholder="Ingrese su apellido"
@@ -56,8 +57,9 @@ const Registro = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Label>RUT:</Form.Label>
+                            <Form.Label htmlFor='rut'>RUT:</Form.Label>
                             <Form.Control
+                                id="rut"
                                 type="text"
                                 name="rut"
                                 placeholder="Ej: 12.345.678-9"
@@ -66,10 +68,11 @@ const Registro = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Label>
+                            <Form.Label htmlFor='telefono'>
                                 Número de Teléfono:
                             </Form.Label>
                             <Form.Control
+                                id="telefono"
                                 type="tel"
                                 name="telefono"
                                 placeholder="Ej: +56 9 1234 5678"
@@ -78,8 +81,9 @@ const Registro = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Label>Dirección:</Form.Label>
+                            <Form.Label htmlFor='direccion'>Dirección:</Form.Label>
                             <Form.Control
+                                id="direccion"
                                 type="text"
                                 name="direccion"
                                 placeholder="Ingrese su dirección"
@@ -88,8 +92,9 @@ const Registro = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Label>Correo:</Form.Label>
+                            <Form.Label htmlFor='correo'>Correo:</Form.Label>
                             <Form.Control
+                                id="correo"
                                 type="email"
                                 name="correo"
                                 placeholder="Ingrese su correo"
@@ -211,8 +216,9 @@ const Registro = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Label>Clave:</Form.Label>
+                            <Form.Label htmlFor='clave'>Clave:</Form.Label>
                             <Form.Control
+                                id="clave"
                                 type="password"
                                 placeholder="Ingrese su clave"
                                 value={clave}
@@ -260,7 +266,6 @@ const Registro = () => {
 
                     </fieldset>
                 </Form>
-
             </div>
         </section>
     );

@@ -25,9 +25,7 @@ function Perfil() {
 
     return (
         <section className="login">
-
             <div className="contenedor-login">
-
                 <fieldset>
                     <legend>Mi Perfil</legend>
 
@@ -65,11 +63,8 @@ function Perfil() {
                             Cerrar sesión
                         </button>
                     </div>
-
                 </fieldset>
-
             </div>
-
         </section>
     );
 }

@@ -8,9 +8,9 @@ function CarritoPage(){
     
     return (
         <>
-        <Header itemsMenu={itemsMenu}/>
-        <Carrito />
-        <Footer itemsMenu={itemsMenu}/>
+            <Header itemsMenu={itemsMenu}/>
+                <Carrito />
+            <Footer itemsMenu={itemsMenu}/>
         </>
     )
 

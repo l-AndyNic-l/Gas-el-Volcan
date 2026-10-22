@@ -1,4 +1,3 @@
-
 import GaleriaProductos from './GaleriaProductos';
 import Seccion from './Seccion';
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +7,6 @@ import Formulario from './Formulario';
 function Main() {
 
     const navigate = useNavigate();
-
     const { productos } = useProductos();
 
     return (

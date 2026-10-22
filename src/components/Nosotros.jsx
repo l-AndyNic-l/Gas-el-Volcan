@@ -1,4 +1,3 @@
-
 import imagen from '../assets/img/nosotros.jpg';
 import Seccion from './Seccion';
 
@@ -11,7 +10,6 @@ function Nosotros() {
             >
 
                 <div className="historia-principal">
-
                     <div className="nosotros-imagen">
                         <img
                             src={imagen}
@@ -20,7 +18,6 @@ function Nosotros() {
                     </div>
 
                     <div className="cuerpo-historia">
-
                         <div className="historia-tag">
                             Desde 1998
                         </div>
@@ -52,9 +49,7 @@ function Nosotros() {
                         <p>
                             Nos diferenciamos por nuestra cercanía con el cliente, la rapidez en las entregas y la capacidad de responder ante los imprevistos del día a día.
                         </p>
-
                     </div>
-
                 </div>
 
                 <div className="historia-frase">
@@ -64,7 +59,6 @@ function Nosotros() {
                 </div>
 
                 <div className="historia-pixel"></div>
-
             </Seccion>
         </>
     );

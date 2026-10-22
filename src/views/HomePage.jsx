@@ -7,7 +7,7 @@ function HomePage() {
     return (
         <>
             <Header itemsMenu={itemsMenu}/>
-            <Main />
+                <Main />
             <Footer itemsMenu={itemsMenu}/>
         </>
     )

@@ -9,7 +9,7 @@ function ProductosPage() {
     return (
         <>
             <Header itemsMenu={itemsMenu} />
-            <Productos />
+                <Productos />
             <Footer itemsMenu={itemsMenu} />
         </>
     )

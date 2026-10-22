@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import GaleriaProductos from './GaleriaProductos';
 import { useProductos } from './ProductosContent';
@@ -11,7 +10,6 @@ function Tienda() {
 
     return (
         <main className="pagina-tienda">
-
             <section className="encabezado-tienda">
                 <h1>Bienvenido a nuestra Tienda</h1>
 
@@ -26,7 +24,6 @@ function Tienda() {
             </section>
 
             <section className="contenido-tienda">
-
                 <h2>Productos destacados</h2>
 
                 <div className="contenedor-productos">
@@ -44,9 +41,7 @@ function Tienda() {
                         Ver todos los productos
                     </Link>
                 </div>
-
             </section>
-
         </main>
     );
 }

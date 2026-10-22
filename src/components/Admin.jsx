@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useProductos } from './ProductosContent';
 import FormularioProducto from './FormularioProducto';
@@ -70,7 +69,6 @@ function Admin() {
 
     return (
         <main className="pagina-admin">
-
             <h1>Panel de Administración</h1>
 
             <p>
@@ -88,7 +86,6 @@ function Admin() {
                 onEditar={seleccionarEditar}
                 onEliminar={quitarProducto}
             />
-
         </main>
     );
 }

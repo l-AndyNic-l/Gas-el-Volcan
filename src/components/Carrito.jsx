@@ -1,9 +1,7 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCarrito } from './CarritoContent';
 import FinalizarCompra from './FinalizarCompra';
-import '../App.css';
 
 function Carrito() {
 
@@ -51,9 +49,7 @@ function Carrito() {
     if (compraFinalizada) {
         return (
             <main className="pagina-carrito">
-
                 <div className="confirmacion-compra">
-
                     <h1>¡Compra simulada exitosa! 💚</h1>
 
                     <p>
@@ -82,22 +78,18 @@ function Carrito() {
                     <Link to="/productos" className="btn-seguir">
                         Seguir comprando
                     </Link>
-
                 </div>
-
             </main>
         );
     }
 
     return (
         <main className="pagina-carrito">
-
             <h1>Mi carrito de compras</h1>
 
             {carrito.length === 0 ? (
 
                 <div className="carrito-vacio">
-
                     <h2>Tu carrito está vacío 🛒</h2>
 
                     <p>¡Explora nuestros productos!</p>
@@ -105,7 +97,6 @@ function Carrito() {
                     <Link to="/productos" className="btn-seguir">
                         Ver productos
                     </Link>
-
                 </div>
 
             ) : mostrarFormulario ? (
@@ -119,7 +110,6 @@ function Carrito() {
             ) : (
 
                 <div className="contenedor-carrito">
-
                     <section className="lista-carrito">
 
                         {carrito.map(producto => (
@@ -135,7 +125,6 @@ function Carrito() {
                                 />
 
                                 <div className="info-item-carrito">
-
                                     <h3>{producto.nombre}</h3>
 
                                     <p className="precio-item">
@@ -145,9 +134,7 @@ function Carrito() {
                                     </p>
 
                                     <div className="controles-carrito">
-
                                         <div className="cantidad-carrito">
-
                                             <button
                                                 onClick={() =>
                                                     cambiarCantidad(
@@ -171,7 +158,6 @@ function Carrito() {
                                             >
                                                 +
                                             </button>
-
                                         </div>
 
                                         <button
@@ -184,9 +170,7 @@ function Carrito() {
                                         >
                                             Eliminar
                                         </button>
-
                                     </div>
-
                                 </div>
 
                                 <strong className="subtotal-item">
@@ -195,14 +179,11 @@ function Carrito() {
                                         producto.cantidad
                                     )}
                                 </strong>
-
                             </article>
                         ))}
-
                     </section>
 
                     <aside className="resumen-carrito">
-
                         <h2>Resumen de compra</h2>
 
                         <div className="fila-resumen">
@@ -228,12 +209,9 @@ function Carrito() {
                         >
                             Seguir comprando
                         </Link>
-
                     </aside>
-
                 </div>
             )}
-
         </main>
     );
 }

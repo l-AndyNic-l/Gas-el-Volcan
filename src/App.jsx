@@ -1,6 +1,4 @@
-
 import { Routes, Route } from 'react-router-dom';
-
 import HomePage from './views/HomePage';
 import ProductosPage from './views/ProductosPage';
 import DetalleProductosPage from './views/DetalleProductosPage';
@@ -14,13 +12,10 @@ import AdminPage from './views/AdminPage';
 import PerfilPage from './views/PerfilPage';
 import Error404Page from './views/Error404Page';
 import ScrollContactos from './components/ScrollContactos';
-
 import { CarritoProvider } from './components/CarritoContent';
 import { FavoritosProvider } from './components/FavoritoContent';
 import { ProductosProvider } from './components/ProductosContent';
-
 import RutaPrivada from './components/RutaPrivada';
-
 import './App.css';
 
 export default function App() {
@@ -41,10 +36,12 @@ export default function App() {
                         <Route path="/carrito" element={<CarritoPage />} />
                         <Route path="/tienda" element={<TiendaPage />} />
                         <Route path="/favoritos" element={<FavoritoPage />} />
+                        
                         <Route element={<RutaPrivada />}>
-                        <Route path="/admin" element={<AdminPage />}/>
+                            <Route path="/admin" element={<AdminPage />}/>
+                            <Route path="/perfil" element={<PerfilPage />} />
                         </Route>
-                        <Route path="/perfil" element={<PerfilPage />} />
+                        
                         <Route path="*" element={<Error404Page />} />
                     </Routes>
 

@@ -1,7 +1,5 @@
-
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-
 import { useProductos } from './ProductosContent';
 import { useCarrito } from './CarritoContent';
 import { useFavoritos } from './FavoritoContent';
@@ -105,11 +103,7 @@ function DetalleProductos() {
 
     return (
         <div className="contenedor-producto">
-
-            {/* GALERÍA DEL PRODUCTO */}
-
             <div className="galeria-producto">
-
                 <div className="miniaturas">
                     <img
                         src={producto.imagen}
@@ -123,13 +117,9 @@ function DetalleProductos() {
                         alt={producto.nombre}
                     />
                 </div>
-
             </div>
 
-            {/* INFORMACIÓN DEL PRODUCTO */}
-
             <div className="detalles-producto">
-
                 <span className="marca">
                     {marcaActual || producto.nombre.split(' ')[1]}
                 </span>
@@ -137,7 +127,6 @@ function DetalleProductos() {
                 <h1>{producto.nombre}</h1>
 
                 <div className="precio-sku">
-
                     <span className="precio">
                         {producto.precio}
                     </span>
@@ -145,19 +134,14 @@ function DetalleProductos() {
                     <span className="sku">
                         SKU: {producto.sku}
                     </span>
-
                 </div>
 
-                {/* SELECCIÓN DE MARCA Y FORMATO */}
-
                 <div className="variantes">
-
                     <p>
                         <strong>Selecciona la Marca:</strong>
                     </p>
 
                     <div className="opciones-variantes">
-
                         {marcas.map(marca => {
 
                             const disponible = productos.some(item => {
@@ -196,7 +180,6 @@ function DetalleProductos() {
                     </p>
 
                     <div className="opciones-variantes">
-
                         {formatos.map(formato => {
 
                             const disponible = productos.some(item => {
@@ -227,17 +210,11 @@ function DetalleProductos() {
                                 </button>
                             );
                         })}
-
                     </div>
-
                 </div>
 
-                {/* CANTIDAD, CARRITO Y FAVORITOS */}
-
                 <div className="acciones-compra">
-
                     <div className="selector-cantidad">
-
                         <button
                             type="button"
                             onClick={() => modificarCantidad(-1)}
@@ -264,7 +241,6 @@ function DetalleProductos() {
                         >
                             +
                         </button>
-
                     </div>
 
                     <button
@@ -290,13 +266,9 @@ function DetalleProductos() {
                             }}
                         ></i>
                     </button>
-
                 </div>
 
-                {/* INFORMACIÓN ADICIONAL */}
-
                 <div className="acordeon-info">
-
                     <details open>
                         <summary>
                             <strong>DESCRIPCIÓN</strong>
@@ -334,11 +306,8 @@ function DetalleProductos() {
                             Código: {producto.sku}
                         </p>
                     </details>
-
                 </div>
-
             </div>
-
         </div>
     );
 }

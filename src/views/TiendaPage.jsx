@@ -1,4 +1,3 @@
-
 import Header from '../components/Header';
 import Tienda from '../components/Tienda';
 import Footer from '../components/Footer';
@@ -9,9 +8,7 @@ function TiendaPage() {
     return (
         <>
             <Header itemsMenu={itemsMenu} />
-
-            <Tienda />
-
+                <Tienda />
             <Footer />
         </>
     );

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { filtros } from '../data/filtros';
 import FiltroProductos from './FiltroProductos';
@@ -9,17 +8,14 @@ import Seccion from './Seccion';
 function Productos() {
 
     const [filtroActivo, setFiltroActivo] = useState("todo");
-
     const { productos } = useProductos();
 
     const productosFiltrados = productos.filter(producto => {
-
         if (filtroActivo === "todo") {
             return true;
         }
 
-        return producto.categoria.trim().toLowerCase() ===
-               filtroActivo.trim().toLowerCase();
+        return producto.categoria.trim().toLowerCase() === filtroActivo.trim().toLowerCase();
     });
 
     return (
