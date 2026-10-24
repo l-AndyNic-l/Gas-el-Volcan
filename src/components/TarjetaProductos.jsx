@@ -1,5 +1,3 @@
-
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCarrito } from '../components/CarritoContent';
 import { useFavoritos } from "./FavoritoContent";

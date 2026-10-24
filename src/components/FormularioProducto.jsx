@@ -1,6 +1,6 @@
-
 import { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import img from '../assets/img/abastible5.jpg'
 
 const formularioVacio = {
     nombre: '',
@@ -63,7 +63,7 @@ function FormularioProducto({ productoEditar, onGuardar, onCancelar }) {
     return (
         <Form onSubmit={enviarFormulario} className="formulario-admin">
 
-            <h2>
+            <h2 id='titulo-admin'>
                 {productoEditar
                     ? 'Editar Producto'
                     : 'Registrar Producto'}

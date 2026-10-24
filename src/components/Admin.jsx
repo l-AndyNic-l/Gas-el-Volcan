@@ -27,7 +27,6 @@ function Admin() {
             `$${precioNumero.toLocaleString('es-CL')}`;
 
         if (productoEditar) {
-
             editarProducto(productoEditar.sku, {
                 ...datos,
                 precio: precioFormateado
@@ -39,12 +38,13 @@ function Admin() {
 
         const nuevoProducto = {
             ...datos,
-            sku: `NUEVO-${crypto.randomUUID()}`,
+            sku: `NUEVO-${crypto.getRandomValues(new Uint32Array(1))[0] % 900 + 100}`,
             precio: precioFormateado,
-            imagen: '/producto-generico.svg'
+            imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqWzYbnp-7uh2xeX1WhIL3c5tQyoi-xskjfsPjobQpr8XgVMZYrLLRVHST&s=10'
         };
 
         agregarProducto(nuevoProducto);
+        window.alert("¡Producto Guardado!")
     };
 
     const seleccionarEditar = (producto) => {

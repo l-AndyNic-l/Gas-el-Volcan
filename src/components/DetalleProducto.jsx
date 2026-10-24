@@ -136,82 +136,86 @@ function DetalleProductos() {
                     </span>
                 </div>
 
-                <div className="variantes">
-                    <p>
-                        <strong>Selecciona la Marca:</strong>
-                    </p>
+                {producto.categoria === "Gas" && (
+                    <div className="variantes">
+                        <p>
+                            <strong>Selecciona la Marca:</strong>
+                        </p>
 
-                    <div className="opciones-variantes">
-                        {marcas.map(marca => {
+                        <div className="opciones-variantes">
+                            {marcas.map(marca => {
 
-                            const disponible = productos.some(item => {
+                                const disponible = productos.some(item => {
 
-                                const nombre = normalizar(item.nombre);
+                                    const nombre = normalizar(item.nombre);
 
-                                return (
-                                    nombre.includes(normalizar(marca)) &&
-                                    nombre.includes(normalizar(formatoActual))
-                                );
-                            });
-
-                            return (
-                                <button
-                                    key={marca}
-                                    type="button"
-                                    disabled={!formatoActual || !disponible}
-                                    className={`btn-marca ${
-                                        marcaActual === marca
-                                            ? `activa-${marca.toLowerCase()}`
-                                            : ''
-                                    }`}
-                                    onClick={() =>
-                                        cambiarVariante(marca, formatoActual)
-                                    }
-                                >
-                                    {marca}
-                                </button>
-                            );
-                        })}
-
-                    </div>
-
-                    <p style={{ marginTop: '15px' }}>
-                        <strong>Selecciona el Formato:</strong>
-                    </p>
-
-                    <div className="opciones-variantes">
-                        {formatos.map(formato => {
-
-                            const disponible = productos.some(item => {
-
-                                const nombre = normalizar(item.nombre);
+                                    return (
+                                        nombre.includes(normalizar(marca)) &&
+                                        nombre.includes(normalizar(formatoActual))
+                                    );
+                                });
 
                                 return (
-                                    nombre.includes(normalizar(marcaActual)) &&
-                                    nombre.includes(normalizar(formato))
-                                );
-                            });
+                                    <button
+                                        key={marca}
+                                        type="button"
+                                        disabled={!formatoActual || !disponible}
+                                        className={`btn-marca ${
+                                            marcaActual === marca
+                                                ? `activa-${marca.toLowerCase()}`
+                                                : ''
+                                        }`}
 
-                            return (
-                                <button
-                                    key={formato}
-                                    type="button"
-                                    disabled={!marcaActual || !disponible}
-                                    className={`btn-variante ${
-                                        formatoActual === formato
-                                            ? 'activa'
-                                            : ''
-                                    }`}
-                                    onClick={() =>
-                                        cambiarVariante(marcaActual, formato)
-                                    }
-                                >
-                                    {formato}
-                                </button>
-                            );
-                        })}
+                                        onClick={() =>
+                                            cambiarVariante(marca, formatoActual)
+                                        }
+                                    >
+                                        {marca}
+                                    </button>
+                                );
+                            })};
+
+                        </div>
+
+                        <p style={{ marginTop: '15px' }}>
+                            <strong>Selecciona el Formato:</strong>
+                        </p>
+
+                        <div className="opciones-variantes">
+                            {formatos.map(formato => {
+
+                                const disponible = productos.some(item => {
+
+                                    const nombre = normalizar(item.nombre);
+
+                                    return (
+                                        nombre.includes(normalizar(marcaActual)) &&
+                                        nombre.includes(normalizar(formato))
+                                    );
+                                });
+
+                                return (
+                                    <button
+                                        key={formato}
+                                        type="button"
+                                        disabled={!marcaActual || !disponible}
+                                        className={`btn-variante ${
+                                            formatoActual === formato
+                                                ? 'activa'
+                                                : ''
+                                        }`}
+
+                                        onClick={() =>
+                                            cambiarVariante(marcaActual, formato)
+                                        }
+                                    >
+                                        {formato}
+                                    </button>
+                                );
+                            })};
+                        </div>
                     </div>
-                </div>
+                )}
 
                 <div className="acciones-compra">
                     <div className="selector-cantidad">

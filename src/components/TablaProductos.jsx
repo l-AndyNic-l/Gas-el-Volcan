@@ -41,7 +41,7 @@ function TablaProductos({ productos, onEditar, onEliminar }) {
                                     <button
                                         type="button"
                                         className="btn-editar"
-                                        onClick={() => onEditar(producto)}
+                                        onClick={() => onEditar(producto) }
                                     >
                                         Editar
                                     </button>
