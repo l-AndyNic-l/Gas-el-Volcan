@@ -50,7 +50,7 @@ function Main() {
             <div id="contactos">
                 <Seccion
                     clase="contactos"
-                    titulo="Contáctanos"
+                    titulo="Contáctanos a Nuestras Redes"
                 >
                     <Formulario />
                 </Seccion>

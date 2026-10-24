@@ -426,8 +426,6 @@ header {
     gap: 30px; 
 }
 .contactos .contenedor-contactos {
-    grid-template-columns: 1fr;
-    max-width: 650px;
     margin: 0 auto;
 }
 
@@ -5355,7 +5353,7 @@ footer .derechos-autor p {
 /* CONTACTOS */
 @media (max-width: 1024px) {
     .contactos {
-        padding: 20px 40px;
+        padding: 20px 60px;
         margin: 15px 0;
     }
 
@@ -5366,10 +5364,6 @@ footer .derechos-autor p {
     .contenedor-contactos {
         gap: 25px;
         padding-top: 15px;
-    }
-
-    .contactos .contenedor-contactos {
-        max-width: 100%;
     }
 
     .contactos-formulario label {
@@ -5418,7 +5412,7 @@ footer .derechos-autor p {
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 767px) {
     .contactos {
         padding: 20px 25px;
     }
@@ -5428,23 +5422,8 @@ footer .derechos-autor p {
     }
 
     .contenedor-contactos {
-        gap: 20px;
-    }
-
-    .contactos-formulario label {
-        font-size: 0.95rem;
-        margin-bottom: 5px;
-    }
-
-    .contactos-formulario input,
-    .contactos-formulario textarea {
-        padding: 9px 11px;
-        font-size: 0.83rem;
-        margin-bottom: 15px;
-    }
-
-    .contactos-formulario textarea {
-        height: 90px;
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
 
     .btn-redes-sociales {
@@ -5457,7 +5436,7 @@ footer .derechos-autor p {
         width: 100%;
         max-width: 280px;
         font-size: 0.95rem;
-        padding: 8px 16px;
+        padding: 10px 16px;
     }
 
     .btn-redes-sociales ul {
@@ -5469,12 +5448,7 @@ footer .derechos-autor p {
         margin: 0 15px;
         font-size: 1.25rem;
     }
-
-    .contactos-map a {
-        font-size: 0.9rem;
-    }
 }
-
 @media (max-width: 550px) {
     .contactos {
         padding: 15px 15px;
@@ -5490,7 +5464,7 @@ footer .derechos-autor p {
     }
 
     .contenedor-contactos {
-        gap: 18px;
+        gap: 20px;
         padding-top: 10px;
     }
 
