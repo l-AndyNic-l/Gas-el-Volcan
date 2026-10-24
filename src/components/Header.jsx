@@ -1,12 +1,13 @@
-
+import { useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/img/logo-navbar.png';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faHeart,
     faCartShopping,
-    faCircleUser
+    faCircleUser,
+    faBars,
+    faXmark
 } from '@fortawesome/free-solid-svg-icons';
 
 import { useCarrito } from './CarritoContent';
@@ -19,13 +20,18 @@ function Header({ itemsMenu = [] }) {
     const { cantidadTotal } = useCarrito();
 
     const sesion = obtenerSesion();
-
     const navigate = useNavigate();
     const location = useLocation();
+
+    const [menuAbierto, setMenuAbierto] = useState(false);
+    
+    const toggleMenu = () => setMenuAbierto(!menuAbierto);
+    const cerrarMenu = () => setMenuAbierto(false);
 
     const irAContactos = (e) => {
 
         e.preventDefault();
+        cerrarMenu();
 
         if (location.pathname === '/') {
 
@@ -48,12 +54,21 @@ function Header({ itemsMenu = [] }) {
         <header>
 
             <div className="contenedor-img">
-                <Link to="/">
+                <Link to="/" onClick={cerrarMenu}>
                     <img src={logo} alt="logo" />
                 </Link>
             </div>
 
-            <nav className="contenedor-nav">
+            <button
+                className="btn-menu-movil"
+                onClick={toggleMenu}
+                aria-label={menuAbierto ? 'Cerrar menú' : 'Abrir menú'}
+                aria-expanded={menuAbierto}
+            >
+                <FontAwesomeIcon icon={menuAbierto ? faXmark : faBars} />
+            </button>
+
+            <nav className={`contenedor-nav ${menuAbierto ? 'abierto' : ''}`}>
                 <ul className="lista-nav">
 
                     {itemsMenu.map((item, index) => (
@@ -72,6 +87,7 @@ function Header({ itemsMenu = [] }) {
 
                                 <NavLink
                                     to={item.href}
+                                    onClick={cerrarMenu}
                                     className={({ isActive }) =>
                                         isActive ? 'activo' : ''
                                     }
@@ -132,10 +148,8 @@ function Header({ itemsMenu = [] }) {
                             <FontAwesomeIcon icon={faCircleUser} />
                         </Link>
                     </li>
-
                 </ul>
             </div>
-
         </header>
     );
 }
