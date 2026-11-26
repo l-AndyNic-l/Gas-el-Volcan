@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import UsuarioService from '../api/UsuarioService';
+import { iniciarSesion } from '../utils/Auth';
 
 const Registro = () => {
 
@@ -10,22 +12,118 @@ const Registro = () => {
     const [clave, setClave] = useState("");
     const [confirmarClave, setConfirmarClave] = useState("");
     const [error, setError] = useState("");
+    const [nombre, setNombre] = useState("");
+    const [apellido, setApellido] = useState("");
+    const [rut, setRut] = useState("");
+    const [telefono, setTelefono] = useState("");
+    const [direccion, setDireccion] = useState("");
+    const [correo, setCorreo] = useState("");
+    const [tipoCompra, setTipoCompra] = useState("unidad");
+    const [frecuenciaCompra, setFrecuenciaCompra] = useState("ocasional");
+    const [nombreNegocio, setNombreNegocio] = useState("");
+    const [rubroNegocio, setRubroNegocio] = useState("");
 
-    const registrar = (e) => {
+    const validarRut = (rut) => {
+        return /^\d{7,8}-[\dkK]$/.test(rut);
+    };
+
+    const validarTelefono = (telefono) => {
+        return /^\d{9}$/.test(telefono);
+    };
+
+    const validarCorreo = (correo) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+    };
+
+    const validarClave = (clave) => {
+        return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(clave);
+    };
+
+
+    const registrar = async (e) => {
         e.preventDefault();
 
-        if (clave !== confirmarClave) {
-            setError("Las contraseñas no coinciden.");
+        if (nombre.trim().length < 3) {
+            setError("El nombre debe tener al menos 3 caracteres");
             return;
         }
 
-        setError("");
+        if (apellido.trim().length < 3) {
+            setError("El apellido debe tener al menos 3 caracteres");
+            return;
+        }
 
-        // Aquí irá la conexión con el backend
-        // para registrar al usuario.
+        if (!validarRut(rut.trim())) {
+            setError("El RUT debe tener el formato 12345678-9");
+            return;
+        }
 
-        navigate("/");
+        if (!validarTelefono(telefono)) {
+            setError("El teléfono debe contener exactamente 9 dígitos");
+            return;
+        }
+
+        if (!direccion.trim()) {
+            setError("La dirección es obligatoria");
+            return;
+        }
+
+        if (!validarCorreo(correo)) {
+            setError("Ingrese un correo válido");
+            return;
+        }
+
+        if (!validarClave(clave)) {
+            setError("La clave debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número");
+            return;
+        }
+
+        if (clave !== confirmarClave) {
+            setError("Las contraseñas no coinciden");
+            return;
+        }
+
+        const rutParse = rut.trim().split("-");
+
+        const usuario = {
+            rut: rutParse[0],
+            dv_rut: rutParse[1].toUpperCase(),
+            nombre: nombre.trim(),
+            apellido: apellido.trim(),
+            telefono,
+            direccion: direccion.trim(),
+            correo: correo.trim(),
+            clave,
+            tipo_compra: tipoCompra,
+            tipo_cliente: tipoCliente,
+            frecuencia_compra: frecuenciaCompra,
+            local_comercial: tieneLocal,
+            nombre_negocio: nombreNegocio,
+            rubro_negocio: rubroNegocio,
+            tipo_usuario: "Cliente"
+        };
+
+        try {
+            const resultado = await UsuarioService.createUsuario(usuario);
+
+            if (resultado.data.correo === correo.trim()) {
+                setError("");
+                await iniciarSesion(correo, clave);
+                navigate("/");
+            } else {
+                setError("Error en el registro.");
+            }
+
+        } catch (error) {
+            console.error("Error del servidor:", error.response?.data);
+
+            setError(
+                error.response?.data ||
+                "Problemas en el registro, intente más tarde."
+            );
+        }
     };
+
 
     return (
         <section className="registro">
@@ -41,6 +139,8 @@ const Registro = () => {
                                 type="text"
                                 name="nombre"
                                 placeholder="Ingrese su nombre"
+                                value={nombre}
+                                onChange={(e) => setNombre(e.target.value)}
                                 required
                             />
                         </Form.Group>
@@ -52,30 +152,36 @@ const Registro = () => {
                                 type="text"
                                 name="apellido"
                                 placeholder="Ingrese su apellido"
+                                value={apellido}
+                                onChange={(e) => setApellido(e.target.value)}
                                 required
                             />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Label htmlFor='rut'>RUT:</Form.Label>
+                            <Form.Label htmlFor='rut'>RUT (Sin puntos):</Form.Label>
                             <Form.Control
                                 id="rut"
                                 type="text"
                                 name="rut"
-                                placeholder="Ej: 12.345.678-9"
+                                placeholder="Ej: 12345678-9"
+                                value={rut}
+                                onChange={(e) => setRut(e.target.value)}
                                 required
                             />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
                             <Form.Label htmlFor='telefono'>
-                                Número de Teléfono:
+                                Número de Teléfono +56:
                             </Form.Label>
                             <Form.Control
                                 id="telefono"
                                 type="tel"
                                 name="telefono"
-                                placeholder="Ej: +56 9 1234 5678"
+                                placeholder="Ej: 912345678"
+                                value={telefono}
+                                onChange={(e) => setTelefono(e.target.value)}
                                 required
                             />
                         </Form.Group>
@@ -87,6 +193,8 @@ const Registro = () => {
                                 type="text"
                                 name="direccion"
                                 placeholder="Ingrese su dirección"
+                                value={direccion}
+                                onChange={(e) => setDireccion(e.target.value)}
                                 required
                             />
                         </Form.Group>
@@ -98,6 +206,8 @@ const Registro = () => {
                                 type="email"
                                 name="correo"
                                 placeholder="Ingrese su correo"
+                                value={correo}
+                                onChange={(e) => setCorreo(e.target.value)}
                                 required
                             />
                         </Form.Group>
@@ -149,6 +259,8 @@ const Registro = () => {
                                         type="text"
                                         name="negocio"
                                         placeholder="Nombre de su negocio"
+                                        value={nombreNegocio}
+                                        onChange={(e) => setNombreNegocio(e.target.value)}
                                         required
                                     />
                                 </Form.Group>
@@ -158,7 +270,11 @@ const Registro = () => {
                                         Rubro del Negocio:
                                     </Form.Label>
 
-                                    <Form.Select name="rubro">
+                                    <Form.Select 
+                                        name="rubro"
+                                        value={rubroNegocio}
+                                        onChange={(e) => setRubroNegocio(e.target.value)}
+                                    >
                                         <option value="">
                                             Seleccione un rubro
                                         </option>
@@ -184,7 +300,11 @@ const Registro = () => {
                                 Tipo de Compra:
                             </Form.Label>
 
-                            <Form.Select name="tipoCompra">
+                            <Form.Select 
+                                name="tipoCompra"
+                                value={tipoCompra}
+                                onChange={(e) => setTipoCompra(e.target.value)}
+                            >
                                 <option value="unidad">
                                     Compra por unidad
                                 </option>
@@ -199,7 +319,11 @@ const Registro = () => {
                                 Frecuencia de Compra:
                             </Form.Label>
 
-                            <Form.Select name="frecuencia">
+                            <Form.Select 
+                                name="frecuencia"
+                                value={frecuenciaCompra}
+                                onChange={(e) => setFrecuenciaCompra(e.target.value)}
+                            >
                                 <option value="ocasional">
                                     Ocasional
                                 </option>

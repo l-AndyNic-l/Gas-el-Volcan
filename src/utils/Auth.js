@@ -1,50 +1,41 @@
+import UsuarioService from "../api/UsuarioService";
 
-const USUARIOS_DEMO = [
-    {
-        correo: 'admin@gaselvolcan.cl',
-        clave: 'Admin1234',
-        nombre: 'Administrador',
-        rol: 'admin'
-    },
-    {
-        correo: 'cliente@gaselvolcan.cl',
-        clave: 'Cliente1234',
-        nombre: 'Cliente',
-        rol: 'cliente'
-    }
-];
-
-export function iniciarSesion(correo, clave) {
-
+export async function iniciarSesion(correo, clave) {
     const correoNormalizado = correo.trim().toLowerCase();
 
-    const usuario = USUARIOS_DEMO.find(
-        item =>
-            item.correo === correoNormalizado &&
-            item.clave === clave
-    );
+    try {
+        const token = await UsuarioService.login(correoNormalizado, clave);
+        const partes = token.split('.');
 
-    if (!usuario) {
+        if (partes.length !== 3) {
+            return false;
+        }
+
+        const payload = JSON.parse(atob(partes[1]));
+        localStorage.setItem('token', token);
+
+        const usuario = await UsuarioService.getUsuarioById(payload.userId);
+
+        const sesion = {
+            correo: payload.sub,
+            userId: payload.userId,
+            rol: payload.tipoUsuario,
+            nombre: usuario.data.nombre + " " + usuario.data.apellido,
+        };
+
+        localStorage.setItem('sesion', JSON.stringify(sesion));
+        return true;
+
+    } catch (error) {
+        console.error('Error login:', error.response?.data || error.message);
         return false;
     }
-
-    const sesion = {
-        correo: usuario.correo,
-        nombre: usuario.nombre,
-        rol: usuario.rol
-    };
-
-    localStorage.setItem(
-        'sesion',
-        JSON.stringify(sesion)
-    );
-
-    return true;
 }
 
 export function obtenerSesion() {
     try {
         return JSON.parse(localStorage.getItem('sesion'));
+
     } catch {
         return null;
     }
@@ -52,6 +43,7 @@ export function obtenerSesion() {
 
 export function cerrarSesion() {
     localStorage.removeItem('sesion');
+    localStorage.removeItem('token')
 }
 
 export function estaAutenticado() {

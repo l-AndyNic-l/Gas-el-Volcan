@@ -10,19 +10,19 @@ function Login() {
     const [clave, setClave] = useState('');
     const [error, setError] = useState('');
 
-    const manejarLogin = (e) => {
+    const manejarLogin = async(e) => {
         e.preventDefault();
 
-        const resultado = iniciarSesion(correo, clave);
+        const resultado = await iniciarSesion(correo, clave);
+        setError('');
 
-        if (resultado) {
-
-            setError('');
+        if (resultado == true) {
 
             const sesion = obtenerSesion();
 
-            if (sesion?.rol === 'admin') {
+            if (sesion?.rol === 'Admin') {
                 navigate('/admin', { replace: true });
+                
             } else {
                 navigate('/perfil', { replace: true });
             }

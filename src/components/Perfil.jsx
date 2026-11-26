@@ -44,12 +44,12 @@ function Perfil() {
 
                     <label>Tipo de usuario:</label>
                     <p>
-                        {usuario.rol === 'admin'
+                        {usuario.rol === 'Admin'
                             ? 'Administrador'
                             : 'Cliente'}
                     </p>
 
-                    {usuario.rol === 'admin' && (
+                    {usuario.rol === 'Admin' && (
                         <Link to="/admin">
                             Ir al Panel de Administración
                         </Link>

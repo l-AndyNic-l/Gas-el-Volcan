@@ -3,8 +3,9 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import UsuarioService from '../api/UsuarioService';
 
-function TablaUsuarios({ usuarios, onEditar, onEliminar }) {
+function TablaUsuarios({ usuarios, setError, cargarUsuarios, setUsuarioEditar }) {
     const [busquedaId, setBusquedaId] = useState('');
     const [filtroIdActivo, setFiltroIdActivo] = useState('');
 
@@ -16,6 +17,33 @@ function TablaUsuarios({ usuarios, onEditar, onEliminar }) {
     const usuariosMostrados = filtroIdActivo
         ? usuarios.filter((u) => String(u.id) === filtroIdActivo)
         : usuarios;
+
+    const onEditar = (usuario) => {
+        setUsuarioEditar(usuario);
+    }
+
+    const onEliminar = async (id) => {
+        const confirmado = window.confirm('¿Estás seguro de que quieres eliminar este usuario?');
+            if (!confirmado) {
+                return;
+        }
+
+        try {
+            const respuesta = await UsuarioService.deleteUsuario(id);
+
+                if (respuesta.status === 204) {
+                    cargarUsuarios();
+                    setError('');
+                    window.alert('Usuario eliminado exitosamente');
+                }
+
+        } catch (err) {
+            const mensaje = err.response?.data?.message || 'No se pudo eliminar el usuario.';
+
+            setError(mensaje);
+            window.alert(mensaje);
+        };
+};
 
     return (
         <div>
@@ -56,9 +84,9 @@ function TablaUsuarios({ usuarios, onEditar, onEliminar }) {
                         usuariosMostrados.map((u) => (
                             <tr key={u.id}>
                                 <td>{u.id}</td>
-                                <td>{u.nombre}</td>
+                                <td>{u.nombre + " " + u.apellido}</td>
                                 <td>{u.correo}</td>
-                                <td>{u.rol}</td>
+                                <td>{u.tipo_usuario}</td>
                                 <td className="d-flex gap-2">
                                     <Button variant="primary" size="sm" onClick={() => onEditar(u)}>
                                         Editar

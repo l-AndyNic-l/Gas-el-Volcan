@@ -4,16 +4,12 @@ import Tab from 'react-bootstrap/Tab';
 import { useProductos } from './ProductosContent';
 import FormularioProducto from './FormularioProducto';
 import TablaProductos from './TablaProductos';
-import FormularioUsuario from './FormularioUsuario';
 import TablaUsuarios from './TablaUsuarios';
 import FormularioVenta from './FormularioVenta';
 import TablaVentas from './TablaVentas';
+import UsuarioService from '../api/UsuarioService';
+import FormularioUsuario from './FormularioUsuario';
 
-const USUARIOS_INICIALES = [
-    { id: '1', nombre: 'Administrador', correo: 'admin@gaselvolcan.cl', rol: 'admin' },
-    { id: '2', nombre: 'Cliente', correo: 'cliente@gaselvolcan.cl', rol: 'cliente' },
-    { id: '3', nombre: 'Camila Rojas', correo: 'camila.rojas@correo.cl', rol: 'cliente' }
-];
 
 const VENTAS_INICIALES = [
     { id: 'V-101', cliente: 'Cliente', fecha: '2026-11-24', detalle: '2x Galón Gas 15kg', total: 49980, estado: 'Completada' },
@@ -57,41 +53,35 @@ function Admin() {
     };
 
     // --- USUARIOS ---
-    const [usuarios, setUsuarios] = useState(() => {
+    const [error, setError] = useState('');
+    const [usuarios, setUsuarios] = useState([]);
+    const [usuarioEditar, setUsuarioEditar] = useState(null)
+
+    const handleCancelar = () => {
+        setUsuarioEditar(null);
+    };
+
+    const cargarUsuarios = async() => {
         try {
-            const guardados = JSON.parse(localStorage.getItem('usuarios_admin'));
-            return Array.isArray(guardados) && guardados.length > 0 ? guardados : USUARIOS_INICIALES;
-        } catch {
-            return USUARIOS_INICIALES;
+            const { data } = await UsuarioService.getAllUsuarios();
+            const listaUsuarios = Array.isArray(data?._embedded?.usuarioList)
+                ? data._embedded.usuarioList
+                : Array.isArray(data)
+                ? data
+                : [];
+
+            setUsuarios(listaUsuarios);
+            setError('');
+
+        } catch (error) {
+            setError(error.response?.data?.message || 'No se pudieron cargar los usuarios.');
         }
-    });
-    const [usuarioEditar, setUsuarioEditar] = useState(null);
+    };
 
     useEffect(() => {
-        localStorage.setItem('usuarios_admin', JSON.stringify(usuarios));
-    }, [usuarios]);
+        cargarUsuarios();
 
-    const guardarUsuario = (datos) => {
-        if (usuarioEditar) {
-            setUsuarios(actuales => actuales.map(u => u.id === usuarioEditar.id ? { ...u, ...datos } : u));
-            setUsuarioEditar(null);
-            window.alert('¡Usuario Actualizado!');
-            return;
-        }
-        const nuevoUsuario = {
-            id: String(usuarios.length + 1),
-            ...datos
-        };
-        setUsuarios(actuales => [...actuales, nuevoUsuario]);
-        window.alert('¡Usuario Guardado!');
-    };
-
-    const quitarUsuario = (id) => {
-        if (window.confirm('¿Estás segura de que quieres eliminar este usuario?')) {
-            setUsuarios(actuales => actuales.filter(u => u.id !== id));
-            if (usuarioEditar?.id === id) setUsuarioEditar(null);
-        }
-    };
+    }, []);
 
     // --- VENTAS ---
     const [ventas, setVentas] = useState(() => {
@@ -153,13 +143,14 @@ function Admin() {
                 <Tab eventKey="usuarios" title="Usuarios">
                     <FormularioUsuario
                         usuarioEditar={usuarioEditar}
-                        onGuardar={guardarUsuario}
-                        onCancelar={() => setUsuarioEditar(null)}
+                        cargarUsuarios={cargarUsuarios}
+                        onCancelar={handleCancelar}
                     />
                     <TablaUsuarios
                         usuarios={usuarios}
-                        onEditar={setUsuarioEditar}
-                        onEliminar={quitarUsuario}
+                        setError={setError}
+                        cargarUsuarios={cargarUsuarios}
+                        setUsuarioEditar={setUsuarioEditar}
                     />
                 </Tab>
 
