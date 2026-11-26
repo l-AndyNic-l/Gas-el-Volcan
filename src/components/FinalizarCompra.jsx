@@ -1,8 +1,9 @@
-
 import { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
+import { useCarrito } from './CarritoContent';
 
 function FinalizarCompra({ total, confirmarCompra, cancelar }) {
+    const { carrito } = useCarrito();
 
     const [datos, setDatos] = useState({
         nombre: '',
@@ -23,7 +24,6 @@ function FinalizarCompra({ total, confirmarCompra, cancelar }) {
     };
 
     const enviarFormulario = (e) => {
-
         e.preventDefault();
 
         const formulario = e.currentTarget;
@@ -34,6 +34,28 @@ function FinalizarCompra({ total, confirmarCompra, cancelar }) {
             e.stopPropagation();
             return;
         }
+
+        // Guardar la venta en localStorage para que aparezca en Admin -> Ventas
+        const detalleProductos = carrito.length > 0
+            ? carrito.map(item => `${item.cantidad}x ${item.nombre}`).join(', ')
+            : 'Compra en tienda';
+
+        const nuevaVenta = {
+            id: `V-${crypto.getRandomValues(new Uint32Array(1))[0] % 900 + 100}`,
+            cliente: datos.nombre,
+            correo: datos.correo,
+            fecha: new Date().toISOString().split('T')[0],
+            detalle: detalleProductos,
+            total: Number(total),
+            estado: 'Completada'
+        };
+
+       const ventasGuardadas = JSON.parse(localStorage.getItem('ventas_admin'));
+       const baseVentas = Array.isArray(ventasGuardadas) && ventasGuardadas.length > 0? ventasGuardadas: [
+        { id: 'V-101', cliente: 'Cliente Demo', fecha: '2026-11-24', detalle: '2x Galón Gas 15kg', total: 49980, estado: 'Completada' },
+        { id: 'V-102', cliente: 'Camila Rojas', fecha: '2026-11-25', detalle: '1x Galón Gas 11kg + Regulador', total: 28500, estado: 'Pendiente' }
+    ];
+        localStorage.setItem('ventas_admin', JSON.stringify([...baseVentas, nuevaVenta]));
 
         confirmarCompra(datos);
     };
