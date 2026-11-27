@@ -17,6 +17,7 @@ import { FavoritosProvider } from './components/FavoritoContent';
 import { ProductosProvider } from './components/ProductosContent';
 import RutaPrivada from './components/RutaPrivada';
 import './App.css';
+import RutaAdmin from './components/RutaAdmin';
 
 export default function App() {
 
@@ -37,10 +38,14 @@ export default function App() {
                         <Route path="/tienda" element={<TiendaPage />} />
                         <Route path="/favoritos" element={<FavoritoPage />} />
                         
-                        <Route element={<RutaPrivada />}>
-                            <Route path="/admin" element={<AdminPage />}/>
-                            <Route path="/perfil" element={<PerfilPage />} />
-                        </Route>
+                            <Route element={<RutaPrivada />}>
+                                <Route path="/perfil" element={<PerfilPage />} />
+                            </Route>
+
+
+                            <Route element={<RutaAdmin />}>
+                                <Route path="/admin" element={<AdminPage />} />
+                            </Route>
                         
                         <Route path="*" element={<Error404Page />} />
                     </Routes>

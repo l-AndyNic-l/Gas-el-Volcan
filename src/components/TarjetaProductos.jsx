@@ -20,7 +20,7 @@ function TarjetaProductos({ producto, seccion }) {
             <article className="tarjeta-catalogo">
 
                 <img
-                    src={producto.imagen}
+                    src={producto.img}
                     alt={producto.nombre}
                 />
 
@@ -84,7 +84,7 @@ function TarjetaProductos({ producto, seccion }) {
             </div>
 
             <img
-                src={producto.imagen}
+                src={producto.img}
                 alt={producto.nombre}
             />
 
@@ -95,7 +95,7 @@ function TarjetaProductos({ producto, seccion }) {
             <div className="compra">
 
                 <h3 className="precio">
-                    {producto.precio}
+                    ${new Intl.NumberFormat('es-CL').format(producto.precio)}
                 </h3>
 
                 <div className="añadir-carrito">

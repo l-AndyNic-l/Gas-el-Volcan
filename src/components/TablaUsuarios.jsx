@@ -43,7 +43,7 @@ function TablaUsuarios({ usuarios, setError, cargarUsuarios, setUsuarioEditar })
             setError(mensaje);
             window.alert(mensaje);
         };
-};
+    };
 
     return (
         <div>

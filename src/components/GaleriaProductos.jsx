@@ -1,4 +1,3 @@
-
 import TarjetaProductos from './TarjetaProductos';
 
 function GaleriaProductos({ productos, seccion }) {

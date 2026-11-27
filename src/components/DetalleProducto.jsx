@@ -35,12 +35,10 @@ function DetalleProductos() {
         normalizar(producto?.nombre).includes(normalizar(formato))
     );
 
-    // Reiniciar la cantidad al cambiar de producto
     useEffect(() => {
         setCantidad(1);
     }, [sku]);
 
-    // Cambiar entre marcas y formatos
     const cambiarVariante = (marca, formato) => {
 
         if (!marca || !formato) return;
@@ -62,31 +60,28 @@ function DetalleProductos() {
         }
     };
 
-    // Modificar cantidad
+
     const modificarCantidad = (cambio) => {
         setCantidad(actual => Math.max(1, actual + cambio));
     };
 
-    // Agregar productos al carrito
+
     const añadirAlCarrito = () => {
         if (producto) {
             agregarAlCarrito(producto, cantidad);
         }
     };
 
-    // Estado del favorito desde el contexto
     const meGusta = producto
         ? esFavorito(producto.sku)
         : false;
 
-    // Agregar o quitar de favoritos
     const alternar = () => {
         if (producto) {
             alternarFavorito(producto);
         }
     };
 
-    // Producto no encontrado
     if (!producto) {
         return (
             <div className="contenedor-producto">
@@ -106,14 +101,14 @@ function DetalleProductos() {
             <div className="galeria-producto">
                 <div className="miniaturas">
                     <img
-                        src={producto.imagen}
+                        src={producto.img}
                         alt={producto.nombre}
                     />
                 </div>
 
                 <div className="imagen-principal">
                     <img
-                        src={producto.imagen}
+                        src={producto.img}
                         alt={producto.nombre}
                     />
                 </div>
@@ -121,14 +116,14 @@ function DetalleProductos() {
 
             <div className="detalles-producto">
                 <span className="marca">
-                    {marcaActual || producto.nombre.split(' ')[1]}
+                    {producto.marca}
                 </span>
 
                 <h1>{producto.nombre}</h1>
 
                 <div className="precio-sku">
                     <span className="precio">
-                        {producto.precio}
+                        ${new Intl.NumberFormat('es-CL').format(producto.precio)}
                     </span>
 
                     <span className="sku">
@@ -173,7 +168,7 @@ function DetalleProductos() {
                                         {marca}
                                     </button>
                                 );
-                            })};
+                            })}
 
                         </div>
 
@@ -212,7 +207,7 @@ function DetalleProductos() {
                                         {formato}
                                     </button>
                                 );
-                            })};
+                            })}
                         </div>
                     </div>
                 )}
@@ -287,9 +282,7 @@ function DetalleProductos() {
                         </summary>
 
                         <p>
-                            Distribución de gas licuado
-                            a domicilio en Chillán y
-                            la Región de Ñuble.
+                            {producto.despacho}
                         </p>
                     </details>
 

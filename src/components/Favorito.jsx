@@ -1,10 +1,9 @@
-
 import { Link } from 'react-router-dom';
 import { useFavoritos } from '../components/FavoritoContent';
 import { useCarrito } from '../components/CarritoContent';
 import '../App.css';
 
-function    Favorito() {
+function  Favorito() {
 
     const { favoritos, alternarFavorito } = useFavoritos();
     const { agregarAlCarrito } = useCarrito();
@@ -44,7 +43,7 @@ function    Favorito() {
                                 to={`/productos/detalle-producto/${producto.sku}`}
                             >
                                 <img
-                                    src={producto.imagen}
+                                    src={producto.img}
                                     alt={producto.nombre}
                                 />
                             </Link>
@@ -52,7 +51,7 @@ function    Favorito() {
                             <h3>{producto.nombre}</h3>
 
                             <p className="precio-favorito">
-                                {producto.precio}
+                                ${new Intl.NumberFormat('es-CL').format(producto.precio)}
                             </p>
 
                             <div className="acciones-favorito">

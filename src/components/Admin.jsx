@@ -9,6 +9,7 @@ import FormularioVenta from './FormularioVenta';
 import TablaVentas from './TablaVentas';
 import UsuarioService from '../api/UsuarioService';
 import FormularioUsuario from './FormularioUsuario';
+import ProductoService from '../api/ProductoService';
 
 
 const VENTAS_INICIALES = [
@@ -17,43 +18,39 @@ const VENTAS_INICIALES = [
 ];
 
 function Admin() {
+    const [error, setError] = useState('');
+
     // --- PRODUCTOS ---
-    const { productos, agregarProducto, editarProducto, eliminarProducto } = useProductos();
-    const [productoEditar, setProductoEditar] = useState(null);
+    const [productos, setProductos] = useState([]);
+    const [productoEditar, setProductoEditar] = useState(null)
 
-    const guardarProducto = (datos) => {
-        const precioNumero = Number(datos.precio);
-        if (!Number.isFinite(precioNumero) || precioNumero <= 0) {
-            alert('Ingresa un precio válido.');
-            return;
-        }
-        const precioFormateado = `$${precioNumero.toLocaleString('es-CL')}`;
-
-        if (productoEditar) {
-            editarProducto(productoEditar.sku, { ...datos, precio: precioFormateado });
-            setProductoEditar(null);
-            return;
-        }
-
-        const nuevoProducto = {
-            ...datos,
-            sku: `NUEVO-${crypto.getRandomValues(new Uint32Array(1))[0] % 900 + 100}`,
-            precio: precioFormateado,
-            imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqWzYbnp-7uh2xeX1WhIL3c5tQyoi-xskjfsPjobQpr8XgVMZYrLLRVHST&s=10'
-        };
-        agregarProducto(nuevoProducto);
-        window.alert('¡Producto Guardado!');
+    const handleCancelarProducto = () => {
+        setProductoEditar(null);
     };
 
-    const quitarProducto = (sku) => {
-        if (window.confirm('¿Estás segura de que quieres eliminar este producto?')) {
-            eliminarProducto(sku);
-            if (productoEditar?.sku === sku) setProductoEditar(null);
+    const cargarProductos = async() => {
+        try {
+            const { data } = await ProductoService.getAllProductos();
+            const listarProductos = Array.isArray(data?._embedded?.productoList)
+                ? data._embedded.productoList
+                : Array.isArray(data)
+                ? data
+                : [];
+
+            setProductos(listarProductos);
+            setError('');
+
+        } catch (error) {
+            setError(error.response?.data?.message || 'No se pudieron cargar los productos.');
         }
     };
+
+    useEffect(() => {
+        cargarProductos();
+
+    }, []);
 
     // --- USUARIOS ---
-    const [error, setError] = useState('');
     const [usuarios, setUsuarios] = useState([]);
     const [usuarioEditar, setUsuarioEditar] = useState(null)
 
@@ -128,15 +125,16 @@ function Admin() {
 
             <Tabs defaultActiveKey="productos" id="admin-tabs" className="mb-4">
                 <Tab eventKey="productos" title="Productos">
-                    <FormularioProducto
+                    <FormularioProducto 
                         productoEditar={productoEditar}
-                        onGuardar={guardarProducto}
-                        onCancelar={() => setProductoEditar(null)}
+                        cargarProductos={cargarProductos}
+                        onCancelar={handleCancelarProducto}
                     />
                     <TablaProductos
                         productos={productos}
-                        onEditar={setProductoEditar}
-                        onEliminar={quitarProducto}
+                        setError={setError}
+                        cargarProductos={cargarProductos}
+                        setProductoEditar={setProductoEditar}
                     />
                 </Tab>
 

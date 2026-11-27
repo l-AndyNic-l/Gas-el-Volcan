@@ -379,6 +379,7 @@ function FormularioUsuario({ usuarioEditar, cargarUsuarios, onCancelar }) {
                 <Button variant="primary" type="submit">
                     {usuarioEditar ? 'Actualizar Usuario' : 'Guardar Usuario'}
                 </Button>
+                
                 {usuarioEditar && (
                     <Button variant="secondary" type="button" onClick={handleCancelar}>
                         Cancelar

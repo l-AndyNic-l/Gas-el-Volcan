@@ -120,7 +120,7 @@ function Carrito() {
                             >
 
                                 <img
-                                    src={producto.imagen}
+                                    src={producto.img}
                                     alt={producto.nombre}
                                 />
 
