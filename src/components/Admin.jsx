@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
-import { useProductos } from './ProductosContent';
 import FormularioProducto from './FormularioProducto';
 import TablaProductos from './TablaProductos';
 import TablaUsuarios from './TablaUsuarios';
@@ -10,12 +9,7 @@ import TablaVentas from './TablaVentas';
 import UsuarioService from '../api/UsuarioService';
 import FormularioUsuario from './FormularioUsuario';
 import ProductoService from '../api/ProductoService';
-
-
-const VENTAS_INICIALES = [
-    { id: 'V-101', cliente: 'Cliente', fecha: '2026-11-24', detalle: '2x Galón Gas 15kg', total: 49980, estado: 'Completada' },
-    { id: 'V-102', cliente: 'Camila Rojas', fecha: '2026-11-25', detalle: '1x Galón Gas 11kg + Regulador', total: 28500, estado: 'Pendiente' }
-];
+import VentaService from '../api/VentaService';
 
 function Admin() {
     const [error, setError] = useState('');
@@ -80,43 +74,35 @@ function Admin() {
 
     }, []);
 
-    // --- VENTAS ---
-    const [ventas, setVentas] = useState(() => {
+        // --- VENTAS ---
+    const [ventas, setVentas] = useState([]);
+    const [ventaEditar, setVentaEditar] = useState(null)
+
+    const handleCancelarVenta = () => {
+        setVentaEditar(null);
+    };
+
+    const cargarVentas = async() => {
         try {
-            const guardadas = JSON.parse(localStorage.getItem('ventas_admin'));
-            return Array.isArray(guardadas) && guardadas.length > 0 ? guardadas : VENTAS_INICIALES;
-        } catch {
-            return VENTAS_INICIALES;
+            const { data } = await VentaService.getAllVentas();
+            const listarVentas = Array.isArray(data?._embedded?.ventaList)
+                ? data._embedded.ventaList
+                : Array.isArray(data)
+                ? data
+                : [];
+
+            setVentas(listarVentas);
+            setError('');
+
+        } catch (error) {
+            setError(error.response?.data?.message || 'No se pudieron cargar las ventas.');
         }
-    });
-    const [ventaEditar, setVentaEditar] = useState(null);
+    };
 
     useEffect(() => {
-        localStorage.setItem('ventas_admin', JSON.stringify(ventas));
-    }, [ventas]);
+        cargarVentas();
 
-    const guardarVenta = (datos) => {
-        if (ventaEditar) {
-            setVentas(actuales => actuales.map(v => v.id === ventaEditar.id ? { ...v, ...datos } : v));
-            setVentaEditar(null);
-            window.alert('¡Venta Actualizada!');
-            return;
-        }
-        const nuevaVenta = {
-            id: `V-${crypto.getRandomValues(new Uint32Array(1))[0] % 900 + 100}`,
-            fecha: new Date().toISOString().split('T')[0],
-            ...datos
-        };
-        setVentas(actuales => [...actuales, nuevaVenta]);
-        window.alert('¡Venta Registrada!');
-    };
-
-    const quitarVenta = (id) => {
-        if (window.confirm('¿Estás segura de que quieres eliminar esta venta?')) {
-            setVentas(actuales => actuales.filter(v => v.id !== id));
-            if (ventaEditar?.id === id) setVentaEditar(null);
-        }
-    };
+    }, []);
 
     return (
         <main className="pagina-admin">
@@ -155,13 +141,14 @@ function Admin() {
                 <Tab eventKey="ventas" title="Ventas">
                     <FormularioVenta
                         ventaEditar={ventaEditar}
-                        onGuardar={guardarVenta}
-                        onCancelar={() => setVentaEditar(null)}
+                        cargarVentas={cargarVentas}
+                        onCancelar={handleCancelarVenta}
                     />
                     <TablaVentas
                         ventas={ventas}
-                        onEditar={setVentaEditar}
-                        onEliminar={quitarVenta}
+                        setError={setError}
+                        cargarVentas={cargarVentas}
+                        setVentaEditar={setVentaEditar}
                     />
                 </Tab>
             </Tabs>

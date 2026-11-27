@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCarrito } from './CarritoContent';
 import FinalizarCompra from './FinalizarCompra';
+import VentaService from '../api/VentaService';
 
 function Carrito() {
 
@@ -14,6 +15,7 @@ function Carrito() {
 
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
     const [compraFinalizada, setCompraFinalizada] = useState(null);
+    const [nombre, setNombre] = useState('');
 
     const obtenerPrecio = (precio) => {
         if (typeof precio === 'number') return precio;
@@ -33,17 +35,29 @@ function Carrito() {
         0
     );
 
-    const confirmarCompra = (datos) => {
+    const confirmarCompra = async(datos, nombre) => {
+        setNombre(nombre);
+        
+        try {
+            const compra = await VentaService.createVenta(datos);
+            
+            setCompraFinalizada(compra);
+            setMostrarFormulario(false);
+            vaciarCarrito();
+                    
+        } catch (error) {
+            console.error("Error del servidor:", error.response?.data);
+        
+            const data = error.response?.data;
 
-        const pedido = {
-            numero: `DEMO-${Date.now()}`,
-            nombre: datos.nombre,
-            total
+            const mensaje =
+                (typeof data === 'string' && data) ||
+                    data?.error ||
+                    data?.message ||
+                    "Problemas al guardar la venta, intente más tarde.";
+            
+            console.log(mensaje);
         };
-
-        setCompraFinalizada(pedido);
-        setMostrarFormulario(false);
-        vaciarCarrito();
     };
 
     if (compraFinalizada) {
@@ -53,7 +67,7 @@ function Carrito() {
                     <h1>¡Compra simulada exitosa! 💚</h1>
 
                     <p>
-                        Gracias, {compraFinalizada.nombre}.
+                        Gracias, {nombre}.
                     </p>
 
                     <p>
@@ -62,12 +76,12 @@ function Carrito() {
 
                     <p>
                         <strong>Número de pedido:</strong>
-                        {' '}{compraFinalizada.numero}
+                        {' '}{compraFinalizada.data.id}
                     </p>
 
                     <p>
                         <strong>Total:</strong>
-                        {' '}{formatoPrecio(compraFinalizada.total)}
+                        {' '} ${new Intl.NumberFormat('es-CL').format(compraFinalizada.data.total)}
                     </p>
 
                     <p>

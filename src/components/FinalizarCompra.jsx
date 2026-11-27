@@ -1,64 +1,60 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-import { useCarrito } from './CarritoContent';
+import UsuarioService from '../api/UsuarioService';
 
 function FinalizarCompra({ total, confirmarCompra, cancelar }) {
-    const { carrito } = useCarrito();
 
-    const [datos, setDatos] = useState({
-        nombre: '',
-        correo: '',
-        telefono: '',
-        direccion: ''
-    });
+    const [estado, setEstado] = useState(false);
 
-    const [validado, setValidado] = useState(false);
+    const [nombre, setNombre] = useState('');
+    const [correo, setCorreo] = useState('');
+    const [telefono, setTelefono] = useState('');
+    const [direccion, setDireccion] = useState('');
 
-    const manejarCambio = (e) => {
-        const { name, value } = e.target;
+    const cargarUsuario = async () => {
+        try {
+            const sesion = JSON.parse(localStorage.getItem('sesion'));
 
-        setDatos(actual => ({
-            ...actual,
-            [name]: value
-        }));
+            if (!sesion?.userId) {
+                throw new Error('No existe una sesión activa');
+            }
+
+            const usuario = await UsuarioService.getUsuarioById(sesion.userId);
+
+            if (usuario.data.correo === sesion.correo) {
+                setNombre(`${usuario.data.nombre} ${usuario.data.apellido}`);
+                setCorreo(usuario.data.correo);
+                setTelefono(usuario.data.telefono);
+                setDireccion(usuario.data.direccion);
+                setEstado(true);
+            }
+
+        } catch (error) {
+            console.error('Error al cargar usuario:', error);
+        }
     };
+
+    useEffect( () => {
+        cargarUsuario()
+    }, [])
 
     const enviarFormulario = (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
-        const formulario = e.currentTarget;
+        const sesion = JSON.parse(localStorage.getItem('sesion'));
 
-        setValidado(true);
-
-        if (!formulario.checkValidity()) {
-            e.stopPropagation();
-            return;
-        }
-
-        // Guardar la venta en localStorage para que aparezca en Admin -> Ventas
-        const detalleProductos = carrito.length > 0
-            ? carrito.map(item => `${item.cantidad}x ${item.nombre}`).join(', ')
-            : 'Compra en tienda';
-
-        const nuevaVenta = {
-            id: `V-${crypto.getRandomValues(new Uint32Array(1))[0] % 900 + 100}`,
-            cliente: datos.nombre,
-            correo: datos.correo,
-            fecha: new Date().toISOString().split('T')[0],
-            detalle: detalleProductos,
+        const datos = {
+            subtotal: total - (total * 0.19),
+            iva: 19,
+            descuento: 0,
             total: Number(total),
-            estado: 'Completada'
+            fecha_venta: new Date(),
+            id_usuario: Number(sesion.userId),
+            estado: "Pendiente"
         };
 
-       const ventasGuardadas = JSON.parse(localStorage.getItem('ventas_admin'));
-       const baseVentas = Array.isArray(ventasGuardadas) && ventasGuardadas.length > 0? ventasGuardadas: [
-        { id: 'V-101', cliente: 'Cliente Demo', fecha: '2026-11-24', detalle: '2x Galón Gas 15kg', total: 49980, estado: 'Completada' },
-        { id: 'V-102', cliente: 'Camila Rojas', fecha: '2026-11-25', detalle: '1x Galón Gas 11kg + Regulador', total: 28500, estado: 'Pendiente' }
-    ];
-        localStorage.setItem('ventas_admin', JSON.stringify([...baseVentas, nuevaVenta]));
-
-        confirmarCompra(datos);
-    };
+        confirmarCompra(datos, nombre);
+    }
 
     return (
         <section className="formulario-compra">
@@ -71,28 +67,28 @@ function FinalizarCompra({ total, confirmarCompra, cancelar }) {
             </Alert>
 
             <p>
-                Total a pagar (simulado):
-                <strong>
-                    {' $' + total.toLocaleString('es-CL')}
+                Total a pagar (simulado): 
+                 <strong>
+                    ${new Intl.NumberFormat('es-CL').format(total)}
                 </strong>
             </p>
 
             <Form
                 noValidate
-                validated={validado}
                 onSubmit={enviarFormulario}
             >
 
                 <Form.Group className="mb-3">
-                    <Form.Label>Nombre completo</Form.Label>
+                    <Form.Label>Nombre completo:</Form.Label>
 
                     <Form.Control
                         type="text"
                         name="nombre"
-                        value={datos.nombre}
-                        onChange={manejarCambio}
+                        value={nombre}
+                        onChange={(e) => setNombre(e.target.value)}
                         placeholder="Ingrese su nombre"
                         minLength={3}
+                        readOnly={estado}
                         required
                     />
 
@@ -102,14 +98,15 @@ function FinalizarCompra({ total, confirmarCompra, cancelar }) {
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <Form.Label>Correo electrónico</Form.Label>
+                    <Form.Label>Correo electrónico:</Form.Label>
 
                     <Form.Control
                         type="email"
                         name="correo"
-                        value={datos.correo}
-                        onChange={manejarCambio}
+                        value={correo}
+                        onChange={(e) => setCorreo(e.target.value)}
                         placeholder="ejemplo@correo.cl"
+                        readOnly={estado}
                         required
                     />
 
@@ -119,16 +116,17 @@ function FinalizarCompra({ total, confirmarCompra, cancelar }) {
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <Form.Label>Teléfono</Form.Label>
+                    <Form.Label>Teléfono:</Form.Label>
 
                     <Form.Control
                         type="tel"
                         name="telefono"
-                        value={datos.telefono}
-                        onChange={manejarCambio}
+                        value={telefono}
+                        onChange={(e) => setTelefono(e.target.value)}
                         placeholder="912345678"
                         pattern="[0-9]{9}"
                         maxLength={9}
+                        readOnly={estado}
                         required
                     />
 
@@ -138,15 +136,16 @@ function FinalizarCompra({ total, confirmarCompra, cancelar }) {
                 </Form.Group>
 
                 <Form.Group className="mb-4">
-                    <Form.Label>Dirección de entrega</Form.Label>
+                    <Form.Label>Dirección de entrega:</Form.Label>
 
                     <Form.Control
                         type="text"
                         name="direccion"
-                        value={datos.direccion}
-                        onChange={manejarCambio}
+                        value={direccion}
+                        onChange={(e) => setDireccion(e.target.value)}
                         placeholder="Calle, número y comuna"
                         minLength={5}
+                        readOnly={estado}
                         required
                     />
 

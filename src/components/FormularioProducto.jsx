@@ -167,11 +167,7 @@ function FormularioProducto({ productoEditar, cargarProductos, onCancelar }) {
     return (
         <Form onSubmit={registrar} className="mb-4">
 
-            <h2 id='titulo-admin'>
-                {productoEditar
-                    ? 'Editar Producto'
-                    : 'Registrar Producto'}
-            </h2>
+            <h3>{productoEditar ? `Actualizar Producto #${productoEditar.id}` : 'Registrar Producto'}</h3>
 
             <Form.Group className="mb-3">
                 <Form.Label>Imagen (Link):</Form.Label>

@@ -97,7 +97,7 @@ function TablaProductos({ productos, setError, cargarProductos, setProductoEdita
                             <td>{producto.sku}</td>
                             <td>{producto.nombre}</td>
                             <td>{producto.categoria}</td>
-                            <td>{producto.precio}</td>
+                            <td>${new Intl.NumberFormat('es-CL').format(producto.precio)}</td>
 
                             <td className="d-flex gap-2">
                                 <Button variant="primary" size="sm" onClick={() => onEditar(producto)}>
