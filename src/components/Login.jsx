@@ -21,10 +21,10 @@ function Login() {
             const sesion = obtenerSesion();
 
             if (sesion?.rol === 'Admin') {
-                navigate('/admin', { replace: true });
+                window.location.href = '/admin';
                 
             } else {
-                navigate('/perfil', { replace: true });
+                window.location.href = '/perfil';
             }
 
         } else {

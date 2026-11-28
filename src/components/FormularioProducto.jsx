@@ -228,9 +228,9 @@ function FormularioProducto({ productoEditar, cargarProductos, onCancelar }) {
                     required
                 >
                     <option value="">Seleccione una marca</option>
-                    <option value="abastible">Abastible</option>
-                    <option value="gasco">Gasco</option>
-                    <option value="lipigas">Lipigas</option>
+                    <option value="Abastible">Abastible</option>
+                    <option value="Gasco">Gasco</option>
+                    <option value="Lipigas">Lipigas</option>
                 </Form.Select>
             </Form.Group>
 

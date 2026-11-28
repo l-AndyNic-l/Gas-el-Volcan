@@ -11,7 +11,7 @@ function FormularioVenta({ ventaEditar, cargarVentas, onCancelar }) {
     const [descuento, setDescuento] = useState('');
     const [total, setTotal] = useState('');
     const [usuario, setUsuario] = useState('');
-    const [estado, setEstado] = useState('');
+    const [estado, setEstado] = useState('Pendiente');
     
     const limpiarFormulario = () => {
         setSubTotal('');

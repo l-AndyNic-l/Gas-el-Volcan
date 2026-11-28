@@ -43,10 +43,10 @@ function Formulario() {
                             </Button>
 
                             <ul>
-                                <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
-                                <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
-                                <li><a href=""><i class="fa-brands fa-tiktok"></i></a></li>
-                                <li><a href=""><i class="fa-brands fa-x-twitter"></i></a></li>
+                                <li><a href=""><i className="fa-brands fa-instagram"></i></a></li>
+                                <li><a href=""><i className="fa-brands fa-facebook"></i></a></li>
+                                <li><a href=""><i className="fa-brands fa-tiktok"></i></a></li>
+                                <li><a href=""><i className="fa-brands fa-x-twitter"></i></a></li>
                             </ul>
                         </div>
                     </Form>
@@ -57,7 +57,7 @@ function Formulario() {
                         <source src={video} type="video/mp4" />
                     </video>
                     <a href="">
-                        <i class="fa-solid fa-location-dot"></i> Av. Vicuña Mackenna 2450, Local 18, Santiago, Chile
+                        <i className="fa-solid fa-location-dot"></i> Av. Vicuña Mackenna 2450, Local 18, Santiago, Chile
                     </a>
                 </div>
             </div>
